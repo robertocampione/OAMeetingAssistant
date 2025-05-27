@@ -109,6 +109,7 @@ async function sendAttendance(mode) {
 /*TESTING ROBERTO*/
 async function getUserProfile(event) {
   try {
+    console.log("Start");
     const accessToken = await OfficeRuntime.auth.getAccessToken({
       allowSignInPrompt: true,
       forMSGraphAccess: false // important for sideload scenarios
