@@ -108,53 +108,48 @@ async function sendAttendance(mode) {
 
 /*TESTING ROBERTO*/
 async function getUserProfile(event) {
-	try {
-		console.log("OfficeRuntime.auth:", OfficeRuntime?.auth);
-		console.log("OfficeRuntime.auth.getAccessToken:", typeof OfficeRuntime?.auth?.getAccessToken);
-		console.log("Office.context.mailbox:", Office.context.mailbox);
-		console.log("Office.context.diagnostics:", Office.context.diagnostics);
-		
-		const accessToken = await OfficeRuntime.auth.getAccessToken({ allowSignInPrompt: true });
-		console.log("Access token acquired:", accessToken);
+  try {
+    const accessToken = await OfficeRuntime.auth.getAccessToken({
+      allowSignInPrompt: true,
+      forMSGraphAccess: false // important for sideload scenarios
+    });
+    console.log("Token obtained for backend:", accessToken);
 
-		const graphResponse = await fetch("https://graph.microsoft.com/v1.0/me", {
-		  method: "GET",
-		  headers: {
-			Authorization: `Bearer ${accessToken}`
-		  }
-		});
+    const response = await fetch("https://yellow-desert-0566f271e.6.azurestaticapps.net/getuserdata", {
+      method: "GET",
+      headers: {
+        Authorization: `Bearer ${accessToken}`
+      }
+    });
 
-		if (graphResponse.ok) {
-		  const profile = await graphResponse.json();
-		  console.log("Graph profile response:", profile);
+    const result = await response.json();
 
-		  Office.context.mailbox.item.notificationMessages.addAsync("profileMsg", {
-			type: "informationalMessage",
-			message: `👤 ${profile.displayName}`,
-			icon: "Icon.16x16",
-			persistent: false
-		  });
-		} else {
-		  console.error("Graph error:", await graphResponse.text());
-		  Office.context.mailbox.item.notificationMessages.addAsync("profileMsg", {
-			type: "errorMessage",
-			message: "❌ Failed to fetch user info from Graph"
-		  });
-		}
-	  } catch (error) {
-		console.error("SSO error:", error);
+    if (response.ok) {
+      const name = result.displayName || result.givenName || "(no name)";
+      Office.context.mailbox.item.notificationMessages.addAsync("profileMsg", {
+        type: "informationalMessage",
+        message: `🧑 ${name}`,
+        icon: "Icon.16x16",
+        persistent: false
+      });
+    } else {
+      console.error("Error response from backend:", result);
+      Office.context.mailbox.item.notificationMessages.addAsync("profileMsg", {
+        type: "errorMessage",
+        message: "❌ Failed to retrieve user info"
+      });
+    }
 
-		  const message = error.message || JSON.stringify(error);
-
-		  Office.context.mailbox.item.notificationMessages.addAsync("profileMsg", {
-			type: "errorMessage",
-			message: `❌ SSO failed: ${message.substring(0, 150)}`
-		  });
-	  } finally {
-		event.completed();
-	  }
-	}
-
+  } catch (error) {
+    console.error("SSO or fetch error:", error);
+    Office.context.mailbox.item.notificationMessages.addAsync("profileMsg", {
+      type: "errorMessage",
+      message: `❌ SSO failed: ${error.message || error}`
+    });
+  } finally {
+    event.completed();
+  }
+}
 
 // mandatory for ExecuteFunction
 if (typeof Office !== "undefined") {
