@@ -109,9 +109,10 @@ async function sendAttendance(mode) {
 /*TESTING ROBERTO*/
 async function getUserProfile(event) {
 	try {
-		console.log("Host:", Office.context.diagnostics.host);
-		console.log("Platform:", Office.context.diagnostics.platform);
-		console.log("OfficeRuntime.auth:", typeof OfficeRuntime.auth);
+		console.log("OfficeRuntime.auth:", OfficeRuntime?.auth);
+		console.log("OfficeRuntime.auth.getAccessToken:", typeof OfficeRuntime?.auth?.getAccessToken);
+		console.log("Office.context.mailbox:", Office.context.mailbox);
+		console.log("Office.context.diagnostics:", Office.context.diagnostics);
 		
 		const accessToken = await OfficeRuntime.auth.getAccessToken({ allowSignInPrompt: true });
 		console.log("Access token acquired:", accessToken);
