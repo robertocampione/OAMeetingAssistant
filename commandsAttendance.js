@@ -112,11 +112,11 @@ async function getUserProfile(event) {
     console.log("Start");
     const accessToken = await OfficeRuntime.auth.getAccessToken({
       allowSignInPrompt: true,
-      forMSGraphAccess: false // important for sideload scenarios
+      forMSGraphAccess: false // currently blocked here probably because I tried in a no business account (seems only possible in enterprise tenant)
     });
     console.log("Token obtained for backend:", accessToken);
-
-    const response = await fetch("https://yellow-desert-0566f271e.6.azurestaticapps.net/getuserdata", {
+    //possible to test with https://yellow-desert-0566f271e.6.azurestaticapps.net/getuserdata static web created in Azure if github cause issues
+    const response = await fetch("https://robertocampione.github.io/OAMeetingAssistant/getuserdata", {
       method: "GET",
       headers: {
         Authorization: `Bearer ${accessToken}`
