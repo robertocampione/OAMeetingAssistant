@@ -39,28 +39,14 @@
 		  <label class="ms-Label" for="businessUnit">Business Unit</label>
 		  <input type="text" id="businessUnit" name="businessUnit" placeholder="Loading..." style="width:50%;" maxlength="30">
 		</div>
-
-              <div class="px-section">
-                <div class="ms-Label">Room Amenities</div>
-                <div class="checkbox-group" style="display:flex; gap:14px;">
-                  <label class="ms-Checkbox">
-                    <input type="checkbox" name="amenities" value="1" checked />
-                    <span class="ms-Checkbox-label">Screen</span>
-                  </label>
-                  <label class="ms-Checkbox">
-                    <input type="checkbox" name="amenities" value="2" checked />
-                    <span class="ms-Checkbox-label">Whiteboard</span>
-                  </label>
-                  <label class="ms-Checkbox">
-                    <input type="checkbox" name="amenities" value="3" />
-                    <span class="ms-Checkbox-label">HDMI Cable</span>
-                  </label>
-                </div>
-                <div style="margin-top:10px; display:flex; align-items:center; gap:8px;">
-                  <label class="ms-Label" for="additionalSeats" style="margin-bottom:0;">Additional seats</label>
-                  <input type="number" id="additionalSeats" min="0" max="20" value="0" style="width:40px;">
-                </div>
-              </div>
+		    
+		<div class="px-section">
+  			<div class="ms-Label">Room Amenities</div>
+			  <div id="amenitiesContainer" class="checkbox-group" style="display:flex; gap:14px;">
+			    <!-- Checkboxes will be dynamically loaded here -->
+			  </div>
+	         </div>
+		    
               <div class="px-section">
                 <div class="ms-Label">Meeting Type</div>
                 <label class="ms-RadioButton">
