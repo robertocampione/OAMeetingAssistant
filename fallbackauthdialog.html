@@ -17,6 +17,14 @@
             },
             "*"
           );
+          const accessToken = event.data.accessToken;
+          const expiry = now + 60 * 60 * 1000;
+
+          sessionStorage.setItem("sso_token_data", JSON.stringify({
+          token: accessToken,
+          expiry
+          }));
+          
           window.close();
         } else {
           document.body.innerText = "Login failed or canceled.";
