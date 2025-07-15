@@ -1,0 +1,7 @@
+{
+  "reservation.confirmed": "Réservation confirmée ! La salle de réunion est désormais visible par tous les participants.",
+  "reservation.cancelled": "Réservation annulée. L'espace réservé a été supprimé.",
+  "status.confirming": "Confirmation...",
+  "status.cancelling": "Annulation...",
+  "reserve.meeting.room.button":"Réserver une salle de réunion"
+}

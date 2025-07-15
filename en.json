@@ -1,0 +1,7 @@
+{
+  "reservation.confirmed": "Reservation confirmed! Meeting room is now visible to all attendees.",
+  "reservation.cancelled": "Reservation cancelled. The placeholder has been removed.",
+  "status.confirming": "Confirming...",
+  "status.cancelling": "Cancelling...",
+  "reserve.meeting.room.button":"Book & Reserve Meeting Room"
+}
