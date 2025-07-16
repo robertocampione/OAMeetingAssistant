@@ -25,7 +25,7 @@
   "confirmation.message":"Réservation confirmée ! La salle de réunion est désormais visible par tous les participants.",
   "cancelation.message":"Réservation annulée. L'espace réservé a été supprimé.",
   "back.button":"Retour",
-  "Close.button":"Fermer",
+  "close.button":"Fermer",
   "reservation.confirmed":"✅ Réservation confirmée",
   "initial.meeting.room.reserved":"✅ Salle de réunion initiale réservée",
   "all.attendees.informed":"✅ Tous les participants ont été informés",
