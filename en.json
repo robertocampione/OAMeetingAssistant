@@ -25,7 +25,7 @@
   "confirmation.message":"Reservation confirmed! Meeting room is now visible to all attendees.",
   "cancelation.message":"Reservation cancelled. The placeholder has been removed.",
   "back.button":"Back",
-  "Close.button":"Close",
+  "close.button":"Close",
   "reservation.confirmed":"✅ Reservation Confirmed",
   "initial.meeting.room.reserved":"✅ Initial Meeting Room Reserved",
   "all.attendees.informed":"✅ All attendees have been informed",
