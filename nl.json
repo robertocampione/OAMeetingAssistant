@@ -25,7 +25,7 @@
   "confirmation.message":"Reservering bevestigd! De vergaderruimte is nu zichtbaar voor alle deelnemers.",
   "cancelation.message":"Reservering geannuleerd. De tijdelijke reservering is verwijderd.",
   "back.button":"Terug",
-  "Close.button":"Sluiten",
+  "close.button":"Sluiten",
   "reservation.confirmed":"✅ Reservering bevestigd",
   "initial.meeting.room.reserved":"✅ Eerste vergaderruimte gereserveerd",
   "all.attendees.informed":"✅ Alle deelnemers zijn geïnformeerd",
