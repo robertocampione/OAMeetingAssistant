@@ -29,7 +29,7 @@
   "reservation.confirmed":"✅ Reservation Confirmed",
   "initial.meeting.room.reserved":"✅ Initial Meeting Room Reserved",
   "all.attendees.informed":"✅ All attendees have been informed",
-  "dicard.message":"Now you can Press <strong>YES</strong> to Close and Discard.",
+  "discard.message":"Now you can Press <strong>YES</strong> to Close and Discard.",
   "yes.button":"Yes",
   "no.button":"No",
   "footer.text":"© Proximus.com — All rights reserved. Empowering your productivity."
