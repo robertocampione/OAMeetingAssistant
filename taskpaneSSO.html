@@ -30,10 +30,6 @@
               </a>
             </div>
           </div>
-          <label class="ms-Toggle">
-            <input type="checkbox" id="devModeToggle">
-            <span class="ms-Toggle-field">DEV mode</span>
-          </label>
         </div>
         <div class="px-content">
           <!-- Wrapper per il form! -->
@@ -50,6 +46,13 @@
 
           <div id="meetingFormSection">
             <form id="meetingForm">
+            <label class="ms-Toggle">
+                <input type="checkbox" id="devModeToggle">
+                <span class="ms-Toggle-field">DEV Mode</span>
+                 <span class="tooltip">ℹ️
+                     <span class="tooltiptext">uncheck to view the payload before submitting</span>
+                </span>
+              </label>
               <div class="px-section">
                 <label data-i18n="building" class="ms-Label">Building</label>
                 <select class="ms-Dropdown-select" id="building">
