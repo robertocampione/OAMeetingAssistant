@@ -37,14 +37,27 @@
         </div>
         <div class="px-content">
           <!-- Wrapper per il form! -->
-         <label class="ms-Toggle">
+<!--          <label class="ms-Toggle">
             <input type="checkbox" id="uatEnvToggle" checked>
             <span class="ms-Toggle-field">UAT Enviroment</span>
             <span class="tooltip">ℹ️
                 <span class="tooltiptext">Switch Between DEV and UAT Enviroments, Uncheck for DEV</span>
-              </span>
+            </span>
+          </label> -->
 
-          </label>
+            
+          <div class="toggle-container">
+            <span class="toggle-label">DEV</span>
+            <label class="switch">
+              <input type="checkbox" id="uatEnvToggle" checked>
+              <span class="slider"></span>
+            </label>
+            <span class="toggle-label">UAT</span>
+            <span class="tooltip">ℹ️
+                <span class="tooltiptext">Switch Between DEV and UAT Enviroments</span>
+            </span>
+          </div>
+
           <div id="meetingFormSection">
             <form id="meetingForm">
               <div class="px-section">
