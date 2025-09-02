@@ -140,9 +140,20 @@
           </nav>
         </div>
         <div class="group">
-          <div class="ms-Label">Environment</div>
-          <div class="toggle"><span>UAT</span><label><input id="uatEnvToggle" type="checkbox" checked /> <span id="uatEnvToggleText">UAT</span></label></div>
-          <div class="toggle"><span>Developer mode</span><label><input id="devModeToggle" type="checkbox" /> <span>Off</span></label></div>
+          <div class="group-title" data-i18n="settings.environment">Environment</div>
+          <label class="switch">
+            <input id="uatEnvToggle" type="checkbox" checked />
+            <span class="slider round"></span>
+          </label>
+          <div class="hint">UAT (default)</div>
+        </div>
+        <div class="group">
+          <div class="group-title" data-i18n="settings.dev.mode">Developer Mode</div>
+          <label class="switch">
+            <input id="devModeToggle" type="checkbox" />
+            <span class="slider round"></span>
+          </label>
+          <div class="hint">Disabled by default</div>
         </div>
       </div>
     </div>
