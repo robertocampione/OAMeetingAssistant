@@ -179,8 +179,23 @@ input[type="number"]{width:72px}
   color: #2b2f38;
 }
 
-/* Optional: restore a little height for select/input */
+/* Boxed field: make inner control look flat inside the outer box */
+.boxed-field .boxed-field__control,
 .boxed-field select.boxed-field__control,
 .boxed-field input.boxed-field__control {
-  padding: 4px 0;                     /* or 8px if you prefer taller */
+  border: 0 !important;        /* beat input[type="text"] */
+  border-radius: 0 !important;
+  background: transparent;
+  padding: 0;
+  box-shadow: none;
+  height: 28px;                /* tweak if you want taller controls */
+  line-height: 28px;
+}
+
+/* Optional focus style so we still show accessibility feedback */
+.boxed-field .boxed-field__control:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(26, 115, 232, .18);
+  border-radius: 6px;          /* soft focus ring inside the box */
+}                   /* or 8px if you prefer taller */
 }
