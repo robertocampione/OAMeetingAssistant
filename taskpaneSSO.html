@@ -1,158 +1,211 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <meta charset="UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>OA Meeting Assistant</title>
-
-  <!-- Office.js will be provided by Outlook; if you load it here, keep the standard CDN: 
-       https://appsforoffice.microsoft.com/lib/1/hosted/office.js -->
-
-  <!-- Fabric/Fluent (optional, keeps checkbox typography compatible with your current build) -->
-  <!-- <link rel="stylesheet" href="https://static2.sharepointonline.com/files/fabric/office-ui-fabric-core/11.0.0/css/fabric.min.css"> -->
-
-  <link rel="stylesheet" href="taskpane.css" />
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://appsforoffice.microsoft.com/lib/1/hosted/office.js"></script>
+    <title>OA Meeting Assistant</title>
+    <link rel="stylesheet" href="https://res-1.cdn.office.net/files/fabric-cdn-prod_20230815.002/office-ui-fabric-core/11.0.0/css/fabric.min.css">
+    <link rel="stylesheet" href="https://proximuscorp.sharepoint.com/:u:/r/sites/TS2110913/Shared%20Documents/OAMeetingAssistant/assets/css/taskpane.css" />
+    
 </head>
 <body class="ms-Fabric" dir="ltr">
-  <div id="add-in-container" class="px-card green-gradient">
-    <!-- Header -->
-    <div class="header">
-      <div class="brand">
-        <div class="logo">Px</div>
-        <div class="title" data-i18n="addon.title">OA Meeting Room Assistant</div>
-      </div>
-      <button id="settings-gear-button" class="icon-btn" title="Settings" aria-label="Settings">⚙️</button>
-    </div>
-
-    <!-- Main content -->
-    <form id="meetingForm" class="content" autocomplete="off">
-      <!-- Building -->
-      <div class="group">
-        <label for="building" class="group-title" data-i18n="label.building">Building</label>
-        <select id="building">
-          <!-- Options loaded elsewhere; keep an example for layout -->
-          <option>Tour &amp; Taxi (02CMP)</option>
-        </select>
-      </div>
-
-      <!-- Business Unit (kept for retro-compat; auto-filled by JS) -->
-      <div class="group">
-        <label for="businessUnit" class="group-title" data-i18n="label.business.unit">Business Unit</label>
-        <input id="businessUnit" type="text" placeholder="INS" />
-        <div class="hint" data-i18n="hint.business.unit">Loaded automatically from your profile.</div>
-      </div>
-
-      <!-- Room amenities (dynamic; includes 'Additional Seats') -->
-      <div class="group">
-        <div class="group-title" data-i18n="section.room.amenities">Room amenities</div>
-        <div id="amenitiesContainer" aria-live="polite"></div>
-      </div>
-
-      <!-- Meeting Type -->
-      <div class="group">
-        <div class="group-title" data-i18n="section.meeting.type">Meeting type</div>
-        <div class="checks">
-          <label class="ms-Checkbox">
-            <input type="radio" name="meetingType" value="Hybrid" checked />
-            <span class="ms-Checkbox-label" data-i18n="meeting.type.hybrid">Hybrid</span>
-          </label>
-          <label class="ms-Checkbox">
-            <input type="radio" name="meetingType" value="In Person" />
-            <span class="ms-Checkbox-label" data-i18n="meeting.type.inperson">In Person</span>
-          </label>
+    <div id="add-in-container" class="px-card red-gradient">
+        <div class="px-header">
+            <img src="assets/logo-proximus6.png" alt="Proximus Logo" class="px-logo" />
+            <div data-i18n="app.title" class="px-title">OA Meeting Room Assistant</div>    
         </div>
-      </div>
+        <div class="px-section" style="text-align:right">
+        <div id="language-bar">
+            
+            <div id="settings-gear-button" class="gear-button">
+                ⚙️
+                <!--<span class="settings-text">Settings</span> -->
+            </div>
 
-      <!-- Toggles -->
-      <div class="group">
-        <div class="checks">
-          <label class="ms-Checkbox"><input id="isPrivate" type="checkbox" /> <span class="ms-Checkbox-label" data-i18n="label.private.meeting">Private meeting</span></label>
-          <label class="ms-Checkbox"><input id="onBehalfOf" type="checkbox" /> <span class="ms-Checkbox-label" data-i18n="label.on.behalf">On behalf of</span></label>
+            <div id="language-bar">
+              <a href="#" id="link-en" data-lang="en-nav">
+                <img src="assets/en.svg" alt="English">
+              </a>
+              <a href="#" id="link-nl" data-lang="nl-nav">
+                <img src="assets/nl.svg" alt="Dutch">
+              </a>
+              <a href="#" id="link-fr" data-lang="fr-nav">
+                <img src="assets/fr.svg" alt="French">
+              </a>
+            </div>
+          </div>
         </div>
-      </div>
-
-      <!-- Extra time -->
-      <div class="group">
-        <div class="group-title" data-i18n="section.extra.time">Extra time needed</div>
-        <div class="row">
-          <label class="inline-field">
-            <span data-i18n="label.before">Before</span>
-            <input id="extraTimeBefore" type="number" min="0" max="15" value="0" />
-          </label>
-          <label class="inline-field">
-            <span data-i18n="label.after">After</span>
-            <input id="extraTimeAfter" type="number" min="0" max="15" value="0" />
-          </label>
-          <div class="hint" style="flex:2" data-i18n="hint.minutes">min</div>
-        </div>
-      </div>
-
-      <!-- CTA -->
-      <div class="cta">
-        <button id="generateJson" type="button" class="btn btn-primary" data-i18n="reserve.meeting.room.button">Find meeting room</button>
-        <pre id="jsonOutput" aria-live="polite"></pre>
-      </div>
-    </form>
-
-    <!-- Confirmation step (used by JS) -->
-    <section id="confirmationSection" class="confirm-card" style="display:none">
-      <div><span data-i18n="label.placeholder">Placeholder:</span> <span id="placeholderRoomName" class="confirm-name">Room XYZ</span></div>
-      <div id="confirmationStatus" class="hint" style="margin-top:6px"></div>
-      <div id="confirmCancelBtns" class="confirm-actions">
-        <button id="confirmBtn" class="btn btn-primary" type="button" data-i18n="confirm.button">Confirm</button>
-        <button id="cancelBtn" class="btn btn-outline" type="button" data-i18n="cancel.button">Cancel</button>
-      </div>
-      <div id="backBtnDiv" class="confirm-actions" style="display:none">
-        <button id="backBtn" class="btn btn-outline" type="button" data-i18n="back.to.form">Back to form</button>
-      </div>
-      <!-- Hidden fields populated by JS -->
-      <input type="hidden" id="confirmEventID" />
-      <input type="hidden" id="confirmDataverseID" />
-      <input type="hidden" id="confirmIcalUid" />
-      <input type="hidden" id="organizerResponse" />
-    </section>
-
-    <!-- Bottom environment bar (kept for JS compatibility) -->
-    <div class="env-bar"><span class="env-dot"></span><span id="env-status">DEV Environment</span></div>
-  </div>
-
-  <!-- Settings overlay (gear) -->
-  <div id="settingsOverlay" class="overlay" role="dialog" aria-modal="true" aria-labelledby="settingsTitle">
-    <div class="panel">
-      <div class="head">
-        <div id="settingsTitle" class="title" data-i18n="settings.title">Settings</div>
-        <button id="closeSettingsButton" class="icon-btn" aria-label="Close">✖</button>
-      </div>
-      <div class="body">
-        <div class="group">
-          <div class="group-title" data-i18n="settings.language">Language</div>
-          <nav id="language-bar" class="lang-bar">
-            <a id="link-en" data-lang="en">EN</a>
-            <a id="link-nl" data-lang="nl">NL</a>
-            <a id="link-fr" data-lang="fr">FR</a>
-          </nav>
-        </div>
-        <div class="group">
-          <div class="group-title" data-i18n="settings.environment">Environment</div>
-          <div class="toggle">
-            <span data-i18n="settings.uat">UAT</span>
-            <label>
-              <input id="uatEnvToggle" type="checkbox" checked />
-              <span id="uatEnvToggleText">UAT</span>
+        <div class="px-content">
+          <!-- Wrapper per il form! -->
+<!--         <div class="toggle-wrapper">
+          <div class="toggle-container">
+            <label class="switch">
+              <input type="checkbox" id="uatEnvToggle" checked>
+              <span class="slider"></span>
             </label>
+            <span id="uatEnvToggleText" class="toggle-label">UAT</span>
           </div>
-          <div class="toggle">
-            <span data-i18n="settings.dev.mode">Developer mode</span>
-            <label><input id="devModeToggle" type="checkbox" /> <span>Off</span></label>
+         </div> -->
+
+          <div id="meetingFormSection">
+            <form id="meetingForm">
+<!--             <label class="ms-Toggle">
+                <input type="checkbox" id="devModeToggle">
+                <span class="ms-Toggle-field">DEV Mode</span>
+                 <span class="tooltip">ℹ️
+                     <span class="tooltiptext">Un-Check To View The Payload Before Submitting</span>
+                </span>
+              </label> -->
+              <div class="px-section">
+                <label data-i18n="building" class="ms-Label">Building</label>
+                <select class="ms-Dropdown-select" id="building">
+                  <option value="Tour and Taxi (02CMP)" selected>Tour and Taxi (02CMP)</option>
+                  <option value="Brussels - Towers or Boreal (02PLD)">Brussels - Towers or Boreal (02PLD)</option>
+                </select>
+              </div>
+
+  <div class="px-section" style="max-width:200px;">
+    <label data-i18n="business.unit" class="ms-Label" for="businessUnit">Business Unit</label>
+    <input type="text" id="businessUnit" name="businessUnit" placeholder="Loading..." style="width:50%;" maxlength="30">
+  </div>
+      
+  <div class="px-section">
+   <div data-i18n="room.maenities" class="ms-Label">Room Amenities</div>
+     <div id="amenitiesContainer" class="checkbox-group" style="display:flex; gap:14px;">
+       <!-- Checkboxes will be dynamically loaded here -->
+     </div>
+          </div>
+      
+              <div class="px-section">
+                <div data-i18n="meeting.type" class="ms-Label">Meeting Type</div>
+                <label class="ms-RadioButton">
+                  <input type="radio" name="meetingType" value="Hybrid" checked>
+                  <span data-i18n="hybird" class="ms-RadioButton-label">Hybrid</span>
+                </label>
+                <label class="ms-RadioButton">
+                  <input type="radio" name="meetingType" value="InPerson">
+                  <span data-i18n="in.person" class="ms-RadioButton-label">In Person</span>
+                </label>
+              </div>
+              <div class="px-section" style="display:flex; gap:22px;">
+                <label class="ms-Checkbox">
+                  <input type="checkbox" name="isPrivate" id="isPrivate">
+                  <span data-i18n="private.meeting" class="ms-Checkbox-label">Private Meeting</span>
+                </label>
+                <label class="ms-Checkbox">
+                  <input type="checkbox" id="onBehalfOf" name="onBehalfOf">
+                  <span data-i18n="on.behalf.of" class="ms-Checkbox-label">On behalf of</span>
+                </label>
+              </div>
+              <div class="px-section">
+                <div data-i18n="extra.time.needed" class="ms-Label">Extra time needed?</div>
+                <div style="display: flex; gap: 16px;">
+                  <div>
+                    <label data-i18n="extra.time.before" for="extraTimeBefore">Before:</label>
+                    <input type="number" id="extraTimeBefore" name="extraTimeBefore" min="0" max="15" value="0" style="width:30px;" />
+                    <span>min</span>
+                  </div>
+                  <div>
+                    <label data-i18n="extra.time.after" for="extraTimeAfter">After:</label>
+                    <input type="number" id="extraTimeAfter" name="extraTimeAfter" min="0" max="15" value="0" style="width:30px;" />
+                    <span>min</span>
+                  </div>
+                </div>
+              </div>
+              <button data-i18n="reserve.meeting.room.button" class="button-pxs ms-Button ms-Button--primary" id="generateJson" type="button" style="margin-top: 16px; width: 100%;">
+                <span class="ms-Button-label">Add your meeting room</span>
+              </button>
+              <pre data-i18n="creating.meeting.loading" id="jsonOutput"></pre>
+            </form>
+          </div>
+
+          <!-- Section: Placeholder confirmation (inizialmente nascosta) -->
+          <div id="confirmationSection" style="display:none; padding:24px;">
+            <input type="hidden" id="confirmEventID" />
+            <input type="hidden" id="confirmDataverseID" />
+            <input type="hidden" id="confirmIcalUid" />
+            <input type="hidden" id="organizerResponse" />
+            <div class="ms-font-m-plus" id="confirmationMessage" style="margin-bottom:16px;">
+              <span data-i18n="placeholder.message">A placeholder has been created and the meeting room</span> 
+              <span style="color:#5C2D91;font-weight:600" id="placeholderRoomName"></span>
+              <span data-i18n="15.minutes.confirmation">is reserved for 15 minutes.</span>
+
+              <span data-i18n="confirm.cancel.message01">Please confirm or cancel your reservation.</span>
+
+              <span data-i18n="confirm.cancel.message02" style="font-size:0.97em;color:#444">
+                At this moment the meeting is only visible for you, if you confirm it will be shared to all the attendees.
+              </span>
+            </div>
+            <div id="confirmCancelBtns" style="margin:28px 0 16px 0;">
+              <button id="confirmBtn" class="ms-Button ms-Button--primary" style="min-width:110px;margin-right:18px;">
+                <span data-i18n="confirm.button" class="ms-Button-label">Confirm</span>
+              </button>
+              <button id="cancelBtn" class="ms-Button" style="min-width:110px;">
+                <span data-i18n="cancel.button" class="ms-Button-label">Cancel</span>
+              </button>
+            </div>
+            <div id="confirmationStatus" data-i18n="confirmation.message" style="margin-top:24px;min-height:24px;font-size:1.08em;"></div>
+            <div id="backBtnDiv" style="display:none; margin-top:20px;">
+              <button id="backBtn" class="ms-Button">
+                <span data-i18n="back.button" class="ms-Button-label">Back</span>
+              </button>
+              <button id="closeEventPlannerWindow" class="ms-Button">
+                <span data-i18n="close.button" class="ms-Button-label">Close</span>
+              </button>
+            </div>
+            <div data-i18n="footer.text" style="border-top:1px solid #eee; margin-top:30px; padding-top:10px; color:#888; font-size:0.85em;">
+              Disclaimer: Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat.
+            </div>
           </div>
         </div>
+        <div id="env-bar-status">
+            <p id="env-status" class="env-status">UAT Enviroment</p>
+        </div>
+    </div>
+
+    <!-- Overlay for closing confirmation -->
+    <div id="closeConfirmOverlay" class="close-overlay" style="display:none;">
+      <div class="confirm-box">
+        <p data-i18n="reservation.confirmed">✅ Reservation Confirmed.</p>
+        <p data-i18n="initial.meeting.room.reserved">✅ Initial Meeting Room Reserved.</p>
+        <p data-i18n="all.attendees.informed">✅ All Attendees Informed.</p>
+        <p data-i18n="discard.message" style="border-top:1px solid #eee; margin-top:30px; padding-top:10px; font-size:0.85em;">Now you can Press <strong>YES</strong> to Close and Discard.</p>
+        <button data-i18n="yes.button" id="confirmCloseYes" class="ms-Button ms-Button--primary"><span class="ms-Button-label">Yes</span></button>
+        <button data-i18n="no.button" id="confirmCloseNo" class="ms-Button"><span class="ms-Button-label">No</span></button>
       </div>
     </div>
-  </div>
 
-  <!-- Your existing script bundle should be included by your framework/build.
-       The JS relies on the IDs above and will work unchanged. -->
-  <!-- <script src="taskpaneSSO.js"></script> -->
+    <!-- Overlay for The Settings -->
+    <div id="settingsOverlay" class="close-overlay settings-overlay" style="display:none;">
+      <div class="confirm-box settings-box">
+        <h2>⚙️ Settings</h2>
+         <p style="border-top:1px solid #eee; padding-top:10px; font-size:0.85em;"></p>
+          <div class="toggle-wrapper">
+          <div class="toggle-container">
+            <label class="switch">
+              <input type="checkbox" id="uatEnvToggle" checked>
+              <span class="slider"></span>
+            </label>
+            <span id="uatEnvToggleText" class="toggle-label">UAT</span>
+          </div>
+         </div>
+          
+        <label class="ms-Toggle">
+        <input type="checkbox" id="devModeToggle" checked>
+            <span class="ms-Toggle-field">DEV Mode</span>
+             <span class="tooltip"> ℹ️
+                 <span class="tooltiptext">Un-Check To View The Request Payload Before Submitting</span>
+            </span>
+        </label>
+        <p style="border-top:1px solid #eee; margin-top:30px; padding-top:10px; font-size:0.85em;"></p>
+        <button id="closeSettingsButton" class="wide-button ms-Button ms-Button--primary"><span class="ms-Button-label">Close</span></button>
+      </div>
+    </div>
+
+ <script src="https://proximuscorp.sharepoint.com/:i:/r/sites/TS2110913/Shared%20Documents/OAMeetingAssistant/javascript/controls/config.js"></script>
+    <script src="https://proximuscorp.sharepoint.com/:i:/r/sites/TS2110913/Shared%20Documents/OAMeetingAssistant/javascript/taskpaneSSO.js"></script>
 </body>
 </html>
+ 
