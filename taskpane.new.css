@@ -1,0 +1,81 @@
+/* ===== Minimal refresh for OA Meeting Assistant (retro‑compatible) ===== */
+
+/* Base */
+:root{
+  --brand:#5a34ad;
+  --text:#1a1a1a;
+  --muted:#60646c;
+  --bg:#ffffff;
+  --bg-soft:#f7f7fb;
+  --line:#e9e9f2;
+  --focus:#1a73e8;
+  --radius:14px;
+}
+
+html,body{height:100%}
+body{margin:0;background:var(--bg-soft);color:var(--text);font:14px/1.45 system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Helvetica,Arial,"Apple Color Emoji","Segoe UI Emoji"}
+
+/* Card */
+.px-card{width:360px;margin:12px auto;background:var(--bg);border:1px solid var(--line);border-radius:var(--radius);box-shadow:0 6px 30px rgba(28,28,30,.08);overflow:hidden;display:flex;flex-direction:column}
+
+/* Header */
+.header{display:flex;align-items:center;justify-content:space-between;padding:14px 16px;border-bottom:1px solid var(--line);background:linear-gradient(180deg,#f9f9ff 0%,#ffffff 100%)}
+.brand{display:flex;gap:10px;align-items:center}
+.logo{inline-size:28px;block-size:28px;border-radius:8px;background:var(--brand);display:inline-flex;align-items:center;justify-content:center;color:#fff;font-weight:700}
+.title{font-weight:600;font-size:14px;color:#2b2f38}
+.icon-btn{appearance:none;border:0;background:transparent;padding:6px;border-radius:10px;cursor:pointer}
+.icon-btn:hover{background:#f0f1f6}
+
+/* Content */
+.content{padding:16px;display:flex;flex-direction:column;gap:14px}
+.group{display:flex;flex-direction:column;gap:8px}
+.group-title{font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:.04em}
+label{font-size:13px;color:#2b2f38}
+select,input[type="text"],input[type="number"]{width:100%;padding:10px 12px;border:1px solid var(--line);border-radius:10px;background:#fff}
+input[type="number"]{width:72px}
+.row{display:flex;gap:12px;align-items:center}
+.inline-field{display:flex;flex-direction:column;gap:6px}
+.checks{display:flex;gap:14px;flex-wrap:wrap}
+.hint{color:var(--muted);font-size:12px}
+
+/* Amenities (rendered by JS uses .ms-Checkbox for labels) */
+.ms-Checkbox{display:inline-flex;gap:8px;align-items:center}
+.ms-Checkbox input{accent-color:var(--brand)}
+.ms-Checkbox-label{font-size:13px}
+
+/* CTA */
+.cta{display:flex;flex-direction:column;gap:10px}
+.btn{appearance:none;border:0;border-radius:999px;padding:12px 16px;font-weight:600;cursor:pointer}
+.btn-primary{background:var(--brand);color:#fff}
+.btn-outline{background:#fff;border:1px solid var(--line)}
+.btn-primary:focus{outline:3px solid rgba(26,115,232,.25)}
+#generateJson{margin-top:8px;width:100%}
+#jsonOutput{max-height:140px;overflow:auto;background:#fbfbfe;border:1px dashed var(--line);padding:10px;border-radius:10px}
+
+/* Confirmation */
+.confirm-card{background:#fff;border-top:1px solid var(--line);padding:14px}
+.confirm-name{font-weight:700}
+.confirm-actions{display:flex;gap:10px;margin-top:12px}
+
+/* Overlay (Settings) */
+.overlay{position:fixed;inset:0;background:rgba(0,0,0,.38);display:none;align-items:center;justify-content:center;z-index:20}
+.panel{width:360px;background:#fff;border-radius:16px;box-shadow:0 20px 60px rgba(0,0,0,.25)}
+.panel .head{display:flex;align-items:center;justify-content:space-between;padding:14px 16px;border-bottom:1px solid var(--line)}
+.panel .body{padding:16px;display:flex;flex-direction:column;gap:14px}
+.lang-bar{display:flex;gap:8px}
+.lang-bar a{padding:6px 10px;border:1px solid var(--line);border-radius:999px;text-decoration:none;color:#2b2f38}
+.lang-bar a.active-language{border-color:var(--brand)}
+.toggle{display:flex;align-items:center;justify-content:space-between;border:1px solid var(--line);border-radius:10px;padding:10px 12px}
+
+/* Environment bar (retro‑compat) */
+.green-gradient{background:linear-gradient(to bottom,#ffffff 0%,#ffffff 95%,#a5c956 100%)}
+.red-gradient{background:linear-gradient(to bottom,#ffffff 0%,#ffffff 95%,#ffb2b2 100%)}
+.env-bar{display:flex;align-items:center;justify-content:center;gap:8px;padding:8px 10px;border-top:1px solid var(--line);font-size:12px;color:#fff}
+.env-dot{inline-size:8px;block-size:8px;border-radius:99px;background:#fff;opacity:.85}
+.env-bar-status{letter-spacing:3px;text-shadow:0 0 1px #1a1818}
+
+/* Responsive */
+@media (max-width: 500px){
+  .px-card{width:100vw;border-radius:0;border-left:0;border-right:0}
+  .panel{width:94vw}
+}
