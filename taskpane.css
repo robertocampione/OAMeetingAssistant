@@ -150,3 +150,13 @@ input[type="number"]{width:72px}
   flex-direction: column;
   gap: 2px;
 }
+
+.boxed-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 10px 12px;                /* same padding as amenities-toggle */
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: #fff;
+}
