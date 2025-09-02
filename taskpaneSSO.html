@@ -139,21 +139,28 @@
             <a id="link-fr" data-lang="fr">FR</a>
           </nav>
         </div>
+    <!-- Environment -->
         <div class="group">
-          <div class="group-title" data-i18n="settings.environment">Environment</div>
-          <label class="switch">
-            <input id="uatEnvToggle" type="checkbox" checked />
-            <span class="slider round"></span>
-          </label>
-          <div class="hint">UAT (default)</div>
+          <div class="group-title">Environment</div>
+          <div class="toggle-container">
+            <label class="switch" aria-label="Environment UAT/DEV">
+              <input type="checkbox" id="uatEnvToggle" checked>
+              <span class="slider round"></span>
+            </label>
+            <span id="uatEnvToggleText" class="toggle-label">UAT</span>
+          </div>
         </div>
+        
+        <!-- Developer mode -->
         <div class="group">
-          <div class="group-title" data-i18n="settings.dev.mode">Developer Mode</div>
-          <label class="switch">
-            <input id="devModeToggle" type="checkbox" />
-            <span class="slider round"></span>
-          </label>
-          <div class="hint">Disabled by default</div>
+          <div class="group-title">Developer mode</div>
+          <div class="toggle-container">
+            <label class="switch" aria-label="Developer mode">
+              <input type="checkbox" id="devModeToggle">
+              <span class="slider round"></span>
+            </label>
+            <span class="toggle-label">Off</span>
+          </div>
         </div>
       </div>
     </div>
