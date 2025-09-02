@@ -138,3 +138,15 @@ input[type="number"]{width:72px}
   display:flex; align-items:center; gap:8px; padding:10px 12px; border-top:1px solid var(--line);
 }
 .amenities-extra input[type="number"] { width:56px; }
+
+.field-title {
+  font-weight: 600;
+  font-size: 12px;
+  color: var(--muted);
+  margin-bottom: 4px; /* spacing above control */
+}
+.field-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
