@@ -115,13 +115,13 @@ input[type="number"]{width:72px}
 .amenities-toggle > div:first-child {
   align-items: flex-start; /* instead of align-items: left */
   background:var(--field-bg);
-  border:1px solid var(--field-border);
+  border:none;
   border-radius:var(--field-radius);
   min-height:var(--field-height);
   
 }
 .amenities-title { font-weight:600; font-size:12px; color:var(--muted); }
-.amenities-summary { font-size:14px;}
+.amenities-summary { font-size:14px;font-weight: 600;}
 .amenities-right { display:flex; align-items:center; gap:8px; }
 .amenities-badge {
   min-width:26px; height:26px; border-radius:999px; display:inline-flex;
