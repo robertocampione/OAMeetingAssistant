@@ -19,20 +19,13 @@
 
     <form id="meetingForm" class="content" autocomplete="off">
       <!-- Building -->
-      <div class="group">
-        <label class="ms-Label" data-i18n="building">Building</label>
-        <select id="building">
+      <div class="boxed-field">
+        <div class="boxed-field__title" data-i18n="building">Building</div>
+        <select id="building" class="boxed-field__control">
           <option value="Tour and Taxi (02CMP)" selected>Tour and Taxi (02CMP)</option>
           <option value="Brussels - Towers or Boreal (02PLD)">Brussels - Towers or Boreal (02PLD)</option>
         </select>
       </div>
-
-      <!-- Business Unit -->
-      <div class="group" style="max-width:200px;">
-        <label class="ms-Label" for="businessUnit" data-i18n="business.unit">Business Unit</label>
-        <input id="businessUnit" type="text" placeholder="INS" maxlength="30" />
-      </div>
-
       <!-- Room amenities (dynamic; includes 'Additional Seats') -->
       <div class="group">
         <div class="ms-Label" data-i18n="room.amenities">Room Amenities</div>
