@@ -106,7 +106,7 @@ input[type="number"]{width:72px}
   width:100%; padding:10px 12px; border:1px solid var(--line);
   border-radius:10px; background:#fff; cursor:pointer;
 }
-.amenities-title { font-weight:600; font-size:12px; color:var(--muted); }
+.amenities-title { font-weight:600; font-size:12px; color:var(--muted); align-items:left }
 .amenities-summary { font-size:13px; color:#2b2f38; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
 .amenities-right { display:flex; align-items:center; gap:8px; }
 .amenities-badge {
