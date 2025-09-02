@@ -160,3 +160,27 @@ input[type="number"]{width:72px}
   border-radius: 10px;
   background: #fff;
 }
+
+.boxed-field__title {
+  font-weight: 600;
+  font-size: 12px;
+  color: var(--muted);
+  line-height: 1;                     /* compact like amenities title */
+}
+
+/* Make the inner control look “inside” the box */
+.boxed-field__control {
+  width: 100%;
+  border: 0;                          /* remove native border */
+  outline: none;
+  background: transparent;
+  padding: 0;                         /* let outer box handle spacing */
+  font-size: 14px;
+  color: #2b2f38;
+}
+
+/* Optional: restore a little height for select/input */
+.boxed-field select.boxed-field__control,
+.boxed-field input.boxed-field__control {
+  padding: 4px 0;                     /* or 8px if you prefer taller */
+}
