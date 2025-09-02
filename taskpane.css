@@ -109,7 +109,7 @@ input[type="number"]{width:72px}
 .amenities-toggle {
   display:flex; align-items:center; justify-content:space-between;
   width:100%; padding:10px 12px; border:1px solid var(--line);
-  border-radius:10px; background:#fff; cursor:pointer;
+  border-radius:10px; background:#f0f1f6; cursor:pointer;
 }
 /* For the "left" column */
 .amenities-toggle > div:first-child {
