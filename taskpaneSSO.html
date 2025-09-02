@@ -6,16 +6,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>OA Meeting Assistant</title>
 
- <!-- <script src="https://appsforoffice.microsoft.com/lib/1/hosted/office.js"></script> -->
-
-  <!-- Fabric/Fluent (optional, keeps checkbox typography compatible with your current build) -->
-  <!-- <link rel="stylesheet" href="https://static2.sharepointonline.com/files/fabric/office-ui-fabric-core/11.0.0/css/fabric.min.css"> -->
+  <!-- Office.js MUST load first -->
+  <script src="https://appsforoffice.microsoft.com/lib/1/hosted/office.js"></script>
 
   <link rel="stylesheet" href="taskpane.css" />
 </head>
 <body class="ms-Fabric" dir="ltr">
   <div id="add-in-container" class="px-card green-gradient">
-    <!-- Header -->
     <div class="header">
       <div class="brand">
         <div class="logo">Px</div>
@@ -24,46 +21,31 @@
       <button id="settings-gear-button" class="icon-btn" title="Settings" aria-label="Settings">⚙️</button>
     </div>
 
-    <!-- Main content -->
     <form id="meetingForm" class="content" autocomplete="off">
-      <!-- Building -->
       <div class="group">
         <label for="building" class="group-title" data-i18n="label.building">Building</label>
-        <select id="building">
-          <!-- Options loaded elsewhere; keep an example for layout -->
-          <option>Tour &amp; Taxi (02CMP)</option>
-        </select>
+        <select id="building"><option>Tour &amp; Taxi (02CMP)</option></select>
       </div>
 
-      <!-- Business Unit (kept for retro-compat; auto-filled by JS) -->
       <div class="group">
         <label for="businessUnit" class="group-title" data-i18n="label.business.unit">Business Unit</label>
         <input id="businessUnit" type="text" placeholder="INS" />
         <div class="hint" data-i18n="hint.business.unit">Loaded automatically from your profile.</div>
       </div>
 
-      <!-- Room amenities (dynamic; includes 'Additional Seats') -->
       <div class="group">
         <div class="group-title" data-i18n="section.room.amenities">Room amenities</div>
         <div id="amenitiesContainer" aria-live="polite"></div>
       </div>
 
-      <!-- Meeting Type -->
       <div class="group">
         <div class="group-title" data-i18n="section.meeting.type">Meeting type</div>
         <div class="checks">
-          <label class="ms-Checkbox">
-            <input type="radio" name="meetingType" value="Hybrid" checked />
-            <span class="ms-Checkbox-label" data-i18n="meeting.type.hybrid">Hybrid</span>
-          </label>
-          <label class="ms-Checkbox">
-            <input type="radio" name="meetingType" value="In Person" />
-            <span class="ms-Checkbox-label" data-i18n="meeting.type.inperson">In Person</span>
-          </label>
+          <label class="ms-Checkbox"><input type="radio" name="meetingType" value="Hybrid" checked /><span class="ms-Checkbox-label" data-i18n="meeting.type.hybrid">Hybrid</span></label>
+          <label class="ms-Checkbox"><input type="radio" name="meetingType" value="In Person" /><span class="ms-Checkbox-label" data-i18n="meeting.type.inperson">In Person</span></label>
         </div>
       </div>
 
-      <!-- Toggles -->
       <div class="group">
         <div class="checks">
           <label class="ms-Checkbox"><input id="isPrivate" type="checkbox" /> <span class="ms-Checkbox-label" data-i18n="label.private.meeting">Private meeting</span></label>
@@ -71,30 +53,21 @@
         </div>
       </div>
 
-      <!-- Extra time -->
       <div class="group">
         <div class="group-title" data-i18n="section.extra.time">Extra time needed</div>
         <div class="row">
-          <label class="inline-field">
-            <span data-i18n="label.before">Before</span>
-            <input id="extraTimeBefore" type="number" min="0" max="15" value="0" />
-          </label>
-          <label class="inline-field">
-            <span data-i18n="label.after">After</span>
-            <input id="extraTimeAfter" type="number" min="0" max="15" value="0" />
-          </label>
+          <label class="inline-field"><span data-i18n="label.before">Before</span><input id="extraTimeBefore" type="number" min="0" max="15" value="0" /></label>
+          <label class="inline-field"><span data-i18n="label.after">After</span><input id="extraTimeAfter" type="number" min="0" max="15" value="0" /></label>
           <div class="hint" style="flex:2" data-i18n="hint.minutes">min</div>
         </div>
       </div>
 
-      <!-- CTA -->
       <div class="cta">
         <button id="generateJson" type="button" class="btn btn-primary" data-i18n="reserve.meeting.room.button">Find meeting room</button>
         <pre id="jsonOutput" aria-live="polite"></pre>
       </div>
     </form>
 
-    <!-- Confirmation step (used by JS) -->
     <section id="confirmationSection" class="confirm-card" style="display:none">
       <div><span data-i18n="label.placeholder">Placeholder:</span> <span id="placeholderRoomName" class="confirm-name">Room XYZ</span></div>
       <div id="confirmationStatus" class="hint" style="margin-top:6px"></div>
@@ -105,18 +78,15 @@
       <div id="backBtnDiv" class="confirm-actions" style="display:none">
         <button id="backBtn" class="btn btn-outline" type="button" data-i18n="back.to.form">Back to form</button>
       </div>
-      <!-- Hidden fields populated by JS -->
       <input type="hidden" id="confirmEventID" />
       <input type="hidden" id="confirmDataverseID" />
       <input type="hidden" id="confirmIcalUid" />
       <input type="hidden" id="organizerResponse" />
     </section>
 
-    <!-- Bottom environment bar (kept for JS compatibility) -->
     <div class="env-bar"><span class="env-dot"></span><span id="env-status">DEV Environment</span></div>
   </div>
 
-  <!-- Settings overlay (gear) -->
   <div id="settingsOverlay" class="overlay" role="dialog" aria-modal="true" aria-labelledby="settingsTitle">
     <div class="panel">
       <div class="head">
@@ -134,23 +104,15 @@
         </div>
         <div class="group">
           <div class="group-title" data-i18n="settings.environment">Environment</div>
-          <div class="toggle">
-            <span data-i18n="settings.uat">UAT</span>
-            <label>
-              <input id="uatEnvToggle" type="checkbox" checked />
-              <span id="uatEnvToggleText">UAT</span>
-            </label>
-          </div>
-          <div class="toggle">
-            <span data-i18n="settings.dev.mode">Developer mode</span>
-            <label><input id="devModeToggle" type="checkbox" /> <span>Off</span></label>
-          </div>
+          <div class="toggle"><span data-i18n="settings.uat">UAT</span><label><input id="uatEnvToggle" type="checkbox" checked /> <span id="uatEnvToggleText">UAT</span></label></div>
+          <div class="toggle"><span data-i18n="settings.dev.mode">Developer mode</span><label><input id="devModeToggle" type="checkbox" /> <span>Off</span></label></div>
         </div>
       </div>
     </div>
   </div>
-   <script src="https://proximuscorp.sharepoint.com/:i:/r/sites/TS2110913/Shared%20Documents/OAMeetingAssistant/javascript/controls/config.js"></script>
-   <script src="https://proximuscorp.sharepoint.com/:i:/r/sites/TS2110913/Shared%20Documents/OAMeetingAssistant/javascript/taskpaneSSO.js"></script>
 
+  <!-- Config first, then add-in logic -->
+  <script src="https://proximuscorp.sharepoint.com/:i:/r/sites/TS2110913/Shared%20Documents/OAMeetingAssistant/javascript/controls/config.js"></script>
+  <script src="https://proximuscorp.sharepoint.com/:i:/r/sites/TS2110913/Shared%20Documents/OAMeetingAssistant/javascript/taskpaneSSO.js"></script>
 </body>
 </html>
