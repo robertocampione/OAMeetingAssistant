@@ -12,7 +12,6 @@
   <div id="add-in-container" class="px-card green-gradient">
     <div class="header">
       <div class="brand">
-        <div class="logo">Px</div>
         <div class="title ms-Label" data-i18n="app.title">OA Meeting Room Assistant</div>
       </div>
       <button id="settings-gear-button" class="icon-btn" title="Settings" aria-label="Settings">⚙️</button>
@@ -23,7 +22,8 @@
       <div class="group">
         <label class="ms-Label" data-i18n="building">Building</label>
         <select id="building">
-          <option>Tour &amp; Taxi (02CMP)</option>
+          <option value="Tour and Taxi (02CMP)" selected>Tour and Taxi (02CMP)</option>
+          <option value="Brussels - Towers or Boreal (02PLD)">Brussels - Towers or Boreal (02PLD)</option>
         </select>
       </div>
 
@@ -119,7 +119,7 @@
       <div data-i18n="footer.text" style="border-top:1px solid #eee; margin-top:30px; padding-top:10px; color:#888; font-size:0.85em;">© Proximus.com — All rights reserved. Empowering your productivity.</div>
     </section>
 
-    <div class="env-bar"><span class="env-dot"></span><span id="env-status">DEV Environment</span></div>
+    <div class="env-bar"><span class="env-dot"></span><span id="env-status">UAT Environment</span></div>
   </div>
 
   <!-- Settings overlay (gear) -->
@@ -138,10 +138,28 @@
             <a id="link-fr" data-lang="fr">FR</a>
           </nav>
         </div>
+    <!-- Environment -->
         <div class="group">
-          <div class="ms-Label">Environment</div>
-          <div class="toggle"><span>UAT</span><label><input id="uatEnvToggle" type="checkbox" checked /> <span id="uatEnvToggleText">UAT</span></label></div>
-          <div class="toggle"><span>Developer mode</span><label><input id="devModeToggle" type="checkbox" /> <span>Off</span></label></div>
+          <div class="group-title">Environment</div>
+          <div class="toggle-container">
+            <label class="switch" aria-label="Environment UAT/DEV">
+              <input type="checkbox" id="uatEnvToggle" checked>
+              <span class="slider round"></span>
+            </label>
+            <span id="uatEnvToggleText" class="toggle-label">UAT</span>
+          </div>
+        </div>
+        
+        <!-- Developer mode -->
+        <div class="group">
+          <div class="group-title">Developer mode</div>
+          <div class="toggle-container">
+            <label class="switch" aria-label="Developer mode">
+              <input type="checkbox" id="devModeToggle" checked>
+              <span class="slider round"></span>
+            </label>
+            <span class="toggle-label">Off</span>
+          </div>
         </div>
       </div>
     </div>
