@@ -19,7 +19,7 @@
 
     <form id="meetingForm" class="content" autocomplete="off">
       <!-- Building -->
-      <div class="boxed-field">
+      <div class="boxed-field boxed-field--select">
         <div class="boxed-field__title" data-i18n="building">Building</div>
         <select id="building" class="boxed-field__control">
           <option value="Tour and Taxi (02CMP)" selected>Tour and Taxi (02CMP)</option>
@@ -28,10 +28,17 @@
       </div>
       <!-- Room amenities (dynamic; includes 'Additional Seats') -->
       <div class="group">
-        <div class="ms-Label" data-i18n="room.amenities">Room Amenities</div>
         <div id="amenitiesContainer" aria-live="polite"></div>
       </div>
 
+      <!-- Meeting Type -->
+      <div class="boxed-field boxed-field--select">
+        <div class="boxed-field__title" data-i18n="meeting.type">Meeting Type</div>
+        <select id="meetingType" class="boxed-field__control">
+          <option data-i18n="hybird" selected>Hybrid</option>
+          <option data-i18n="in.person">In Person</option>
+        </select>
+      </div>
       <!-- Meeting Type -->
       <div class="group">
         <div class="ms-Label" data-i18n="meeting.type">Meeting Type</div>
@@ -46,8 +53,37 @@
           </label>
         </div>
       </div>
+      <!-- Extra time -->
+      <div class="boxed-field">
+        <div class="boxed-field__title" data-i18n="extra.time.needed">Extra Time Needed</div>
+        <div class="two-col">
+          <div class="check-inline">
+            <label for="extraTimeBefore" data-i18n="extra.time.before">Before</label>
+            <input id="extraTimeBefore" class="boxed-field__control" type="number" min="0" max="15" value="0" style="width:64px;" />
+            <span>min</span>
+          </div>
+          <div class="check-inline">
+            <label for="extraTimeAfter" data-i18n="extra.time.after">After</label>
+            <input id="extraTimeAfter" class="boxed-field__control" type="number" min="0" max="15" value="0" style="width:64px;" />
+            <span>min</span>
+          </div>
+        </div>
+      </div>
 
-      <!-- Toggles -->
+      <div class="boxed-field">
+        <div class="two-col">
+          <label class="ms-Checkbox">
+            <input id="isPrivate" type="checkbox" />
+            <span class="ms-Checkbox-label" data-i18n="private.meeting">Private meeting</span>
+          </label>
+          <label class="ms-Checkbox">
+            <input id="onBehalfOf" type="checkbox" />
+            <span class="ms-Checkbox-label" data-i18n="on.behalf.of">On behalf of</span>
+          </label>
+        </div>
+      </div>
+
+      <!-- Toggles 
       <div class="group" style="display:flex; gap:22px;">
         <label class="ms-Checkbox">
           <input id="isPrivate" type="checkbox" />
@@ -57,9 +93,9 @@
           <input id="onBehalfOf" type="checkbox" />
           <span class="ms-Checkbox-label" data-i18n="on.behalf.of">On Behalf Of</span>
         </label>
-      </div>
+      </div> -->
 
-      <!-- Extra time -->
+      <!-- Extra timez
       <div class="group">
         <div class="ms-Label" data-i18n="extra.time.needed">Extra Time Needed</div>
         <div class="row" style="display:flex; gap:16px;">
@@ -74,7 +110,7 @@
             <span>min</span>
           </div>
         </div>
-      </div>
+      </div> -->
 
       <!-- CTA -->
       <button id="generateJson" type="button" class="btn btn-primary ms-Button ms-Button--primary" data-i18n="reserve.meeting.room.button" style="margin-top: 16px; width: 100%;">
