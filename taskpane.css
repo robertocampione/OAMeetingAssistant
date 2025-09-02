@@ -10,10 +10,15 @@
   --line:#e9e9f2;
   --focus:#1a73e8;
   --radius:14px;
+
+  --field-bg:#f0f1f6;        /* light grey box like the mock */
+  --field-border:#e3e5ee;
+  --field-radius:10px;
+  --field-height:48px;       /* keep all boxes same height */
 }
 
 html,body{height:100%}
-body{margin:0;background:var(--bg-soft);color:var(--text);font:14px/1.45 system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Helvetica,Arial,"Apple Color Emoji","Segoe UI Emoji"}
+body{margin:0;background:var(--bg-soft);color:var(--text);font-family:'proximus-regular', sans-serif;}
 
 /* Card */
 .px-card{width:360px;margin:12px auto;background:var(--bg);border:1px solid var(--line);border-radius:var(--radius);box-shadow:0 6px 30px rgba(28,28,30,.08);overflow:hidden;display:flex;flex-direction:column}
@@ -109,9 +114,14 @@ input[type="number"]{width:72px}
 /* For the "left" column */
 .amenities-toggle > div:first-child {
   align-items: flex-start; /* instead of align-items: left */
+  background:var(--field-bg);
+  border:1px solid var(--field-border);
+  border-radius:var(--field-radius);
+  min-height:var(--field-height);
+  
 }
 .amenities-title { font-weight:600; font-size:12px; color:var(--muted); }
-.amenities-summary { font-size:13px; color:#2b2f38; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+.amenities-summary { font-size:14px;}
 .amenities-right { display:flex; align-items:center; gap:8px; }
 .amenities-badge {
   min-width:26px; height:26px; border-radius:999px; display:inline-flex;
@@ -138,7 +148,16 @@ input[type="number"]{width:72px}
   display:flex; align-items:center; gap:8px; padding:10px 12px; border-top:1px solid var(--line);
 }
 .amenities-extra input[type="number"] { width:56px; }
+.amenities-wrapper.has-value .amenities-summary{ font-weight:600; } 
 
+.boxed-field,
+.amenities-toggle{
+  min-height:var(--field-height);
+}
+
+/* Small tidy-ups */
+.check-inline{ display:flex; gap:16px; align-items:center; flex-wrap:wrap; }
+.two-col{ display:grid; grid-template-columns:1fr 1fr; gap:12px; }
 .field-title {
   font-weight: 600;
   font-size: 12px;
@@ -152,50 +171,43 @@ input[type="number"]{width:72px}
 }
 
 .boxed-field {
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-  padding: 10px 12px;                /* same padding as amenities-toggle */
-  border: 1px solid var(--line);
-  border-radius: 10px;
-  background: #fff;
+    display:flex; flex-direction:column; gap:6px;
+  padding:10px 12px;
+  background:var(--field-bg);
+  border:1px solid var(--field-border);
+  border-radius:var(--field-radius);
 }
 
 .boxed-field__title {
-  font-weight: 600;
-  font-size: 12px;
-  color: var(--muted);
-  line-height: 1;                     /* compact like amenities title */
+  font-weight:600;
+  font-size:12px;
+  color:var(--muted);
+  line-height:1;                 /* compact like amenities title */
 }
 
 /* Make the inner control look “inside” the box */
 .boxed-field__control {
-  width: 100%;
-  border: 0;                          /* remove native border */
-  outline: none;
-  background: transparent;
-  padding: 0;                         /* let outer box handle spacing */
-  font-size: 14px;
-  color: #2b2f38;
+  width:100%;
+  border:0 !important;
+  background:transparent;
+  padding:0;
+  height:calc(var(--field-height) - 26px); /* title(12px) + gaps ≈ 26px */
+  line-height:calc(var(--field-height) - 26px);
+  font-size:14px;
+  color:#2b2f38;
+  outline:none;
 }
 
-/* Boxed field: make inner control look flat inside the outer box */
-.boxed-field .boxed-field__control,
-.boxed-field select.boxed-field__control,
-.boxed-field input.boxed-field__control {
-  border: 0 !important;        /* beat input[type="text"] */
-  border-radius: 0 !important;
-  background: transparent;
-  padding: 0;
-  box-shadow: none;
-  height: 28px;                /* tweak if you want taller controls */
-  line-height: 28px;
+/* Make select look like the mock (custom caret) */
+.boxed-field--select{ position:relative; }
+.boxed-field--select .boxed-field__control{
+  -webkit-appearance:none; appearance:none;
+  font-weight:600;                     /* ➋ selected value bold */
+}
+.boxed-field--select::after{
+  content:""; position:absolute; right:12px; top:50%; translate:0 -2px; 
+  width:6px; height:6px; border:2px solid #5a34ad; border-left:0; border-top:0;
+  transform:translateY(-50%) rotate(45deg); border-radius:1px; /* downward caret */
 }
 
-/* Optional focus style so we still show accessibility feedback */
-.boxed-field .boxed-field__control:focus {
-  outline: none;
-  box-shadow: 0 0 0 3px rgba(26, 115, 232, .18);
-  border-radius: 6px;          /* soft focus ring inside the box */
-}                   /* or 8px if you prefer taller */
 }
