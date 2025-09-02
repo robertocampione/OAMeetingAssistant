@@ -102,9 +102,13 @@ input[type="number"]{width:72px}
 /* Amenities dropdown */
 .amenities-wrapper { position: relative; width: 100%; }
 .amenities-toggle {
-  display:flex; align-items:left; justify-content:space-between;
+  display:flex; align-items:center; justify-content:space-between;
   width:100%; padding:10px 12px; border:1px solid var(--line);
   border-radius:10px; background:#fff; cursor:pointer;
+}
+/* For the "left" column */
+.amenities-toggle > div:first-child {
+  align-items: flex-start; /* instead of align-items: left */
 }
 .amenities-title { font-weight:600; font-size:12px; color:var(--muted); }
 .amenities-summary { font-size:13px; color:#2b2f38; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
