@@ -287,14 +287,23 @@ input[type="number"]{width:72px}
   font-weight:600;                     /* ➋ selected value bold */
 }
 .boxed-field--select::after{
-  content:""; position:absolute; right:12px; top:50%; translate:0 -2px; 
-  width:6px; height:6px; border:2px solid #5a34ad; border-left:0; border-top:0;
-  transform:translateY(-50%) rotate(45deg); border-radius:1px; /* downward caret */
+  content:"";
+  position:absolute;
+  right:12px;
+  top:50%;
+  transform:translateY(-50%) rotate(45deg);
+  width:6px; height:6px;
+  border:2px solid #5a34ad;
+  border-left:0; border-top:0;
+  border-radius:1px;
+}
 
 /* Visibility helper */
 .is-hidden { display: none !important; }
 /* If something sets display:block inline, force the form back to flex */
 #meetingForm[style*="display: block"] { display: flex !important; }
 }
+/* Fix invalid margin */
+.confirm-subtext{ margin: 2px 0 20px 0; }
 
 }
