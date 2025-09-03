@@ -113,7 +113,28 @@ input[type="number"]{width:72px}
 .confirm-title{margin:0;font-size:18px;line-height:1.25;font-weight:800;color:#2b2f38}
 .confirm-subtext{margin:0;color:#444;font-size:14px}
 .confirm-name{color:var(--brand);font-weight:700}
+.confirm-status{margin-top:14px;min-height:24px;font-size:15px}
+.confirm-followup{display:flex;gap:10px;justify-content:center;margin-top:12px}
 
+/* Layout & spacing */
+.confirm-card{ text-align:left; gap:14px; }
+.confirm-hero{ margin:6px auto 12px auto; }
+.confirm-title{ text-align:center; margin:4px 0 8px 0; }
+.confirm-subtext{ margin:0 0 6px 0; }
+.room-block{ margin:8px 0 2px 0; }
+
+/* Left-align the textual content while keeping hero/actions centered */
+.confirm-actions{ justify-content:center; gap:14px; margin-top:16px; }
+
+/* Wider buttons (as per mock) */
+.btn-lg{ padding:16px 26px; font-size:16px; border-radius:14px; }
+.btn-wide{ min-width:168px; }
+
+/* Optional: center body text for error state while title stays centered */
+.is-error .confirm-subtext, .is-error .room-block{ text-align:center; margin-left:auto; margin-right:auto; }
+
+/* Footer line */
+.confirm-footer{border-top:1px solid var(--line);margin-top:20px;padding-top:10px;color:#888;font-size:.85em}
 /* Room summary block */
 .room-block{display:flex;gap:10px;align-items:flex-start;text-align:left;margin:6px 0 2px 0;
   padding:12px;border:1px solid var(--line);background:#f7f7fb;border-radius:12px}
