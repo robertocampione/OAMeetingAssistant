@@ -14,6 +14,7 @@
   "extra.time.after":"After",
   "reserve.meeting.room.button":"Find a meeting room",
   "creating.meeting.loading":"Creating the meeting for you...",
+  "confirmation.success.title":"Temporary placeholder reserved!",
   "placeholder.message":"A placeholder has been created and the meeting room",
   "15.minutes.confirmation":"is reserved for 15 minutes.",
   "confirm.cancel.message01":"Please confirm or cancel your reservation.",
