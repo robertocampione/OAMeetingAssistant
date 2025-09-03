@@ -50,10 +50,47 @@ input[type="number"]{width:72px}
 
 /* CTA */
 .cta{display:flex;flex-direction:column;gap:10px}
-.btn{appearance:none;border:0;border-radius:999px;padding:12px 16px;font-weight:600;cursor:pointer}
-.btn-primary{background:var(--brand);color:#fff}
-.btn-outline{background:#fff;border:1px solid var(--line)}
-.btn-primary:focus{outline:3px solid rgba(26,115,232,.25)}
+/* Base button */
+.btn {
+  appearance: none;
+  border: 0;
+  padding: 12px 24px;
+  font-weight: 600;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+/* 1. Primary Purple Button */
+.btn-primary {
+  background: var(--brand, #6A1B9A); /* fallback purple */
+  color: #fff;
+  border-radius: 999px; /* fully pill by default */
+}
+
+/* Variant: only bottom-right rounded */
+.btn-primary.br-bottom-right {
+  border-radius: 0; /* reset */
+  border-bottom-right-radius: 16px; /* adjust size as needed */
+}
+
+/* Variant: bottom-left and bottom-right rounded */
+.btn-primary.br-bottom-both {
+  border-radius: 0;
+  border-bottom-left-radius: 16px;
+  border-bottom-right-radius: 16px;
+}
+
+/* 2. Secondary Lilac Button */
+.btn-secondary {
+  background: #E9D7F7; /* light lilac */
+  color: var(--brand, #6A1B9A); /* purple text */
+  border-radius: 8px; /* small rounded corners */
+}
+
+.btn-secondary:hover {
+  background: #e0c9f3;
+}
+
 #generateJson{margin-top:8px;width:100%}
 #jsonOutput{max-height:140px;overflow:auto;background:#fbfbfe;border:1px dashed var(--line);padding:10px;border-radius:10px}
 
