@@ -308,3 +308,11 @@ input[type="number"]{width:72px}
 .confirm-subtext{ margin: 2px 0 20px 0; }
 
 }
+
+/* Result view: hide pre-action content, show follow-up */
+#confirmationSection.show-result .confirm-subtext,
+#confirmationSection.show-result .room-block,
+#confirmationSection.show-result #confirmCancelBtns { display: none !important; }
+
+#confirmationSection.show-result #backBtnDiv { display: flex !important; }
+
