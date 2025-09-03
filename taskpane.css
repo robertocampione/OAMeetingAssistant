@@ -110,8 +110,8 @@ input[type="number"]{width:72px}
 .confirm-card.is-success .confirm-ill{background:#e9f7ef;color:#1b7f4a}
 .confirm-card.is-error   .confirm-ill{background:#fdeaea;color:#b42318}
 
-.confirm-title{margin:0;font-size:18px;line-height:1.25;font-weight:800;color:#2b2f38}
-.confirm-subtext{margin:0;color:#444;font-size:14px}
+.confirm-title{margin:20px;font-size:18px;line-height:1.25;font-weight:800;color:#2b2f38}
+.confirm-subtext{margin:20px;color:#444;font-size:14px}
 .confirm-name{color:var(--brand);font-weight:700}
 .confirm-status{margin-top:14px;min-height:24px;font-size:15px}
 .confirm-followup{display:flex;gap:10px;justify-content:center;margin-top:12px}
@@ -120,11 +120,11 @@ input[type="number"]{width:72px}
 .confirm-card{ text-align:left; gap:14px; }
 .confirm-hero{ margin:6px auto 12px auto; }
 .confirm-title{ text-align:center; margin:4px 0 8px 0; }
-.confirm-subtext{ margin:0 0 6px 0; }
-.room-block{ margin:8px 0 2px 0; }
+.confirm-subtext{ margin:2px0 0 20px 0; }
+.room-block{ margin:10px 0 2px 0; }
 
 /* Left-align the textual content while keeping hero/actions centered */
-.confirm-actions{ justify-content:center; gap:14px; margin-top:16px; }
+.confirm-actions{ justify-content:center; gap:14px; margin-top:16px; display: flex !important}
 
 /* Wider buttons (as per mock) */
 .btn-lg{ padding:16px 26px; font-size:16px; border-radius:14px; }
