@@ -129,9 +129,9 @@ input[type="number"]{width:72px}
   background:var(--brand); color:#fff; font-size:12px; padding:0 8px;
 }
 .amenities-chevron {
-  display:inline-block;
+  display:inline-block; transform:rotate(180deg); transition:transform .15s ease;
   border: solid #5a34ad; border-width: 0 2px 2px 0; padding:3px;
-  rotate: -135deg; /* simple chevron */
+  rotate: -45deg; 
 }
 .amenities-open .amenities-chevron { transform:rotate(0); }
 
