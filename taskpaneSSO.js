@@ -623,7 +623,7 @@ Office.onReady(info => {
                   ? confirmation_message || "Reservation confirmed! Meeting room is now visible to all attendees."
                   : cancelation_message || "Reservation cancelled. The placeholder has been removed.";
     
-              document.getElementById('backBtnDiv').style.display = 'block';
+               
               document.getElementById('backBtn').onclick = resetToForm;
             })
             .catch(err => {
@@ -635,6 +635,7 @@ Office.onReady(info => {
 
     // Resets UI back to the initial form
     function resetToForm() {
+	  document.getElementById('backBtnDiv').style.display = 'block';
       document.getElementById('meetingForm').style.display = 'block';
       document.getElementById('confirmationSection').style.display = 'none';
       jsonOutput.textContent = "";
