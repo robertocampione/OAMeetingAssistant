@@ -14,7 +14,7 @@
   --field-bg:#f0f1f6;        /* light grey box like the mock */
   --field-border:#e3e5ee;
   --field-radius:10px;
-  --field-height:48px;       /* keep all boxes same height */
+  --field-height:38px;       /* keep all boxes same height */
 }
 
 html,body{height:100%}
@@ -135,7 +135,7 @@ input[type="number"]{width:72px}
 .is-error .confirm-subtext, .is-error .room-block{ text-align:center; margin-left:auto; margin-right:auto; }
 
 /* Footer line */
-.confirm-footer{border-top:1px solid var(--line);margin-top:20px;padding-top:10px;color:#888;font-size:.85em}
+.confirm-footer{border-top:1px solid var(--line);margin-top:20px;padding-top:10px;color:#888;font-size:.65em}
 /* Room summary block */
 .room-block{display:flex;gap:10px;align-items:flex-start;text-align:left;margin:6px 0 2px 0;
   padding:12px;border:1px solid var(--line);background:#f7f7fb;border-radius:12px}
