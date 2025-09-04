@@ -93,7 +93,7 @@ input[type="number"]{width:72px}
 
 /* ===== Confirmation (v2) ===== */
 /* Buttons area */
-.btn-lg{padding:14px 22px;font-size:15px;border-radius:12px}
+.btn-lg{padding:14px 22px;font-size:15px;border-radius:0px}
 .btn-wide{flex:1;min-width:120px}
 .confirm-actions{display:flex;gap:12px;justify-content:center;margin-top:14px}
 
