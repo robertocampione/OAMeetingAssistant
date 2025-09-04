@@ -130,6 +130,7 @@ Office.onReady(info => {
 
     // Allows retry/reset to the form
     function resetToForm() {
+	  document.getElementById('backBtnDiv').style.display = 'flex';
       document.getElementById('meetingForm').style.display = 'block';
       document.getElementById('confirmationSection').style.display = 'none';
       jsonOutput.textContent = "";
