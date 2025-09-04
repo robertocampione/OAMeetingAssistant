@@ -635,7 +635,6 @@ Office.onReady(info => {
 
     // Resets UI back to the initial form
     function resetToForm() {
-	  document.getElementById('backBtnDiv').style.display = 'block';
       document.getElementById('meetingForm').style.display = 'block';
       document.getElementById('confirmationSection').style.display = 'none';
       jsonOutput.textContent = "";
