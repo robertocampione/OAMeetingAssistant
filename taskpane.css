@@ -100,6 +100,28 @@ input[type="number"]{width:72px}
 #generateJson{margin-top:8px;width:100%}
 #jsonOutput{max-height:140px;overflow:auto;background:#fbfbfe;border:1px dashed var(--line);padding:10px;border-radius:10px}
 
+
+/* ===== Loading (waiting screens) ===== */
+.loading-card{padding:24px;display:flex;flex-direction:column;gap:12px;text-align:center}
+.loading-hero{display:flex;justify-content:center}
+.loading-ill{
+  width:96px;height:96px;border-radius:50%;
+  display:grid;place-items:center;margin:6px auto 2px auto;
+  background:#efe9fd;color:var(--brand);font-size:40px;
+  animation:pulse 1.2s ease-in-out infinite;
+}
+.loading-title{margin:20px;font-size:18px;line-height:1.25;font-weight:800;color:#2b2f38}
+.loading-subtext{margin:2px 0 20px 0;color:#444;font-size:14px}
+
+/* Simple pulse for the ⏳ glyph */
+@keyframes pulse{
+  0%{transform:scale(1);opacity:.9}
+  50%{transform:scale(1.06);opacity:1}
+  100%{transform:scale(1);opacity:.9}
+}
+
+
+
 /* ===== Confirmation (v2) ===== */
 .confirm-card{padding:24px;display:flex;flex-direction:column;gap:12px;text-align:center}
 .confirm-hero{display:flex;justify-content:center}
