@@ -554,32 +554,82 @@ Office.onReady(info => {
 	  container.appendChild(additionalSeatsDiv);
 	}
 	
-  // Displays confirmation or cancellation UI
-    function showConfirmationUI(roomName, flowResponse) {
-      document.getElementById('meetingForm').style.display = 'none';
-      document.getElementById('confirmationSection').style.display = 'block';
-      document.getElementById('confirmationStatus').textContent = "";
-      document.getElementById('backBtnDiv').style.display = 'none';
-      document.getElementById('placeholderRoomName').textContent = roomName;
+  // Displays the confirmation (pre-action) UI and wires the handlers
+function showConfirmationUI(roomName, flowResponse = {}) {
+  const form     = document.getElementById('meetingForm');
+  const section  = document.getElementById('confirmationSection');
 
-      document.getElementById("confirmEventID").value = flowResponse.EventID || "";
-      document.getElementById("confirmDataverseID").value = flowResponse.DataverseID || "";
-      document.getElementById("confirmIcalUid").value = flowResponse.iCalUid || "";
-      document.getElementById("organizerResponse").value = "";
+  // 1) Show the confirmation section, hide the form
+  form.style.display = 'flex';   // keep flex for gap layout when you come back
+  form.style.display = 'none';
+  section.style.display = 'block';
 
-      document.getElementById('confirmBtn').disabled = false;
-      document.getElementById('cancelBtn').disabled = false;
-      document.getElementById('confirmCancelBtns').style.display = "block";
+  // 2) Reset visual state to PRE-ACTION
+  section.classList.remove('show-result', 'is-cancel', 'is-error');
+  section.classList.add('is-success'); // neutral/success tint for pre-action
 
-      document.getElementById('confirmBtn').onclick = function() {
-        document.getElementById("organizerResponse").value = "Confirmed";
-        handleConfirmation();
-      };
-      document.getElementById('cancelBtn').onclick = function() {
-        document.getElementById("organizerResponse").value = "Cancel";
-        handleConfirmation();
-      };
-    }
+  // Title + messages
+  const titleEl = document.getElementById('confirmationTitle');
+  const msgEl   = document.getElementById('confirmationMessage');
+  const status  = document.getElementById('confirmationStatus');
+  titleEl.textContent = 'Temporary placeholder reserved!';
+  msgEl.style.display = '';       // show instructions paragraph
+  status.textContent  = '';       // clear any previous result
+
+  // Room block (make sure it is visible for pre-action)
+  const roomBlock = section.querySelector('.room-block');
+  if (roomBlock) roomBlock.style.display = '';
+
+  // 3) Fill room info (inline + block link)
+  const roomInline = document.getElementById('placeholderRoomName');
+  const roomLinkEl = document.getElementById('placeholderRoomName_link');
+  if (roomInline) roomInline.textContent = roomName || '';
+  if (roomLinkEl) roomLinkEl.textContent = roomName || '';
+
+  // Optional room URL + building (if provided by Flow1)
+  const link = document.getElementById('placeholderRoomLink');
+  const buildingEl = document.getElementById('placeholderBuilding');
+  const roomUrl = flowResponse.RoomUrl || flowResponse.RoomURL || '';
+  if (link) {
+    link.href = roomUrl || '#';
+    link.style.pointerEvents = roomUrl ? 'auto' : 'none';
+  }
+  if (buildingEl) {
+    const b = flowResponse.BuildingName || flowResponse.Building || '';
+    buildingEl.textContent = b;
+    buildingEl.style.display = b ? '' : 'none';
+  }
+
+  // 4) Hidden fields for Flow2
+  document.getElementById('confirmEventID').value     = flowResponse.EventID     || '';
+  document.getElementById('confirmDataverseID').value = flowResponse.DataverseID || '';
+  document.getElementById('confirmIcalUid').value     = flowResponse.iCalUid     || '';
+  document.getElementById('organizerResponse').value  = '';
+
+  // 5) Reset CTA row + follow-up row
+  const ctas = document.getElementById('confirmCancelBtns');
+  ctas.style.display = 'flex';
+  const backRow = document.getElementById('backBtnDiv');
+  backRow.style.display = 'none';
+
+  // 6) Enable and wire buttons
+  const confirmBtn = document.getElementById('confirmBtn');
+  const cancelBtn  = document.getElementById('cancelBtn');
+  confirmBtn.disabled = false;
+  cancelBtn.disabled  = false;
+
+  confirmBtn.onclick = function () {
+    document.getElementById('organizerResponse').value = 'Confirmed';
+    handleConfirmation();
+  };
+  cancelBtn.onclick = function () {
+    document.getElementById('organizerResponse').value = 'Cancel';
+    handleConfirmation();
+  };
+
+  // 7) UX: ensure the section is in view (optional)
+  try { section.scrollIntoView({ behavior: 'smooth', block: 'start' }); } catch (_) {}
+}
 
     // Handles confirmation or cancellation of meeting room
     function handleConfirmation() {
@@ -618,14 +668,30 @@ Office.onReady(info => {
             })
             .then(response => response.text())
             .then(result => {
-              statusDiv.textContent =
-                payload.OrganizerResponse === "Confirmed"
-                  ? confirmation_message || "Reservation confirmed! Meeting room is now visible to all attendees."
-                  : cancelation_message || "Reservation cancelled. The placeholder has been removed.";
-    
-               
-              document.getElementById('backBtn').onclick = resetToForm;
-            })
+				  const section = document.getElementById('confirmationSection');
+				  const isConfirm = payload.OrganizerResponse === "Confirmed";
+				
+				  document.getElementById('confirmationTitle').textContent =
+				    isConfirm ? 'Reservation confirmed' : 'Reservation cancelled';
+				
+				  document.getElementById('confirmationStatus').textContent =
+				    isConfirm
+				      ? (confirmation_message || 'Reservation confirmed! Meeting room is now visible to all attendees.')
+				      : (cancelation_message || 'Reservation cancelled. The placeholder has been removed.');
+				
+				  // hide pre-action blocks for the result view
+				  document.getElementById('confirmationMessage').style.display = 'none';
+				  const roomBlock = section.querySelector('.room-block');
+				  if (roomBlock) roomBlock.style.display = 'none';
+				  document.getElementById('confirmCancelBtns').style.display = 'none';
+				
+				  section.classList.toggle('is-success', isConfirm);
+				  section.classList.toggle('is-cancel', !isConfirm);
+				  section.classList.add('show-result');         // if you have CSS tied to this
+				
+				  document.getElementById('backBtnDiv').style.display = 'flex';
+				  document.getElementById('backBtn').onclick = resetToForm;
+				})
             .catch(err => {
               statusDiv.textContent = "Error: " + err;
               document.getElementById('backBtnDiv').style.display = 'block';
@@ -635,7 +701,7 @@ Office.onReady(info => {
 
     // Resets UI back to the initial form
     function resetToForm() {
-      document.getElementById('meetingForm').style.display = 'block';
+      document.getElementById('meetingForm').style.display = 'flex';
       document.getElementById('confirmationSection').style.display = 'none';
       jsonOutput.textContent = "";
     }
