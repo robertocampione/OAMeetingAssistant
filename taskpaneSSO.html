@@ -119,6 +119,25 @@
       <pre id="jsonOutput" aria-live="polite" data-i18n="creating.meeting.loading"></pre>
     </form>
 
+<!-- Loading step (shown while calling Flow1 or Flow2) -->
+<section id="loadingSection" class="loading-card" style="display:none;" aria-live="polite">
+  <div class="loading-hero" aria-hidden="true">
+    <div class="loading-ill">⏳</div>
+  </div>
+
+  <!-- Title + message are updated by JS depending on 'finding' | 'confirming' | 'cancelling' -->
+  <h2 id="loadingTitle" class="loading-title" data-i18n="loading.title.finding">
+    Looking for a meeting room…
+  </h2>
+
+  <p class="loading-subtext">
+    <span id="loadingMsg1" data-i18n="creating.meeting.loading">Creating the meeting for you…</span><br/>
+    <span id="loadingMsg2" data-i18n="loading.msg.keepopen">Please don’t close this window or the add-in.</span>
+  </p>
+</section>
+
+
+    
 <!-- Confirmation step (used by JS) -->
 <section id="confirmationSection" class="confirm-card is-success" style="display:none;">
   <input type="hidden" id="confirmEventID" />
