@@ -207,7 +207,7 @@ const getAttachmentsWithContent = (item) => {
 };
 
 Office.onReady(info => {
-  console.log("CACHE TRACKER: UAT TEST: 1111111111111111111111111111111111111111111111111111111111111111");
+  console.log("CACHE TRACKER: UAT TEST: 123");
  if (info.host === Office.HostType.Outlook) {
     const addinContainer = document.getElementById("add-in-container");
     const envStatus = document.getElementById("env-status");
@@ -701,10 +701,9 @@ function showConfirmationUI(roomName, flowResponse = {}) {
 
     // Resets UI back to the initial form
     function resetToForm() {
-	  document.getElementById('confirmCancelBtns').style.display = 'flex'
-	  document.getElementById('cancelBtn').style.display = 'flex'
-	  document.getElementById('confirmBtn').style.display = 'flex'	
-		
+	  document.getElementById('confirmCancelBtns').style.display = 'flex';
+	  document.getElementById('cancelBtn').style.display = 'flex';
+	  document.getElementById('confirmBtn').style.display = 'flex';
 		
       document.getElementById('meetingForm').style.display = 'flex';
       document.getElementById('confirmationSection').style.display = 'none';
