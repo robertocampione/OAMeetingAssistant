@@ -119,38 +119,66 @@
       <pre id="jsonOutput" aria-live="polite" data-i18n="creating.meeting.loading"></pre>
     </form>
 
-    <!-- Confirmation step (used by JS) -->
-    <section id="confirmationSection" class="confirm-card" style="display:none; padding:24px;">
-      <input type="hidden" id="confirmEventID" />
-      <input type="hidden" id="confirmDataverseID" />
-      <input type="hidden" id="confirmIcalUid" />
-      <input type="hidden" id="organizerResponse" />
-      <div class="ms-font-m-plus" id="confirmationMessage" style="margin-bottom:16px;">
-        <span data-i18n="placeholder.message">A placeholder has been created and the meeting room</span>
-        <span id="placeholderRoomName" style="color:#5C2D91;font-weight:600"></span>
-        <span data-i18n="15.minutes.confirmation">is reserved for 15 minutes.</span>
-        <span data-i18n="confirm.cancel.message01">Please confirm or cancel your reservation.</span>
-        <span data-i18n="confirm.cancel.message02" style="font-size:0.97em;color:#444">At this moment the meeting is only visible for you, if you confirm it will be shared to all the attendees.</span>
-      </div>
-      <div id="confirmCancelBtns" style="margin:28px 0 16px 0;">
-        
-        <button id="cancelBtn" class="btn btn-secondary" style="min-width:110px;">
-          <span data-i18n="cancel.button" class="ms-Button-label">Cancel</span>
-        </button>
-        <button id="confirmBtn" class="btn btn-primary br-bottom-right" style="min-width:110px;margin-right:18px;">
-          <span data-i18n="confirm.button" class="ms-Button-label">Confirm</span>
-        </button>
+<!-- Confirmation step (used by JS) -->
+<section id="confirmationSection" class="confirm-card is-success" style="display:none;">
+  <input type="hidden" id="confirmEventID" />
+  <input type="hidden" id="confirmDataverseID" />
+  <input type="hidden" id="confirmIcalUid" />
+  <input type="hidden" id="organizerResponse" />
 
-      </div>
-      <div id="confirmationStatus" data-i18n="confirmation.message" style="margin-top:24px;min-height:24px;font-size:1.08em;"></div>
-      <div id="backBtnDiv" style="display:none; margin-top:20px;">
-        <button id="backBtn" class="btn btn-secondary">
-          <span data-i18n="back.button" class="ms-Button-label">Back</span></button>
-        <button id="closeEventPlannerWindow" class="btn btn-primary br-bottom-right">
-          <span data-i18n="close.button" class="ms-Button-label">Close</span></button>
-      </div>
-      <div data-i18n="footer.text" style="border-top:1px solid #eee; margin-top:30px; padding-top:10px; color:#888; font-size:0.85em;">© Proximus.com — All rights reserved. Empowering your productivity.</div>
-    </section>
+  <!-- Hero Illustration / state icon -->
+  <div class="confirm-hero" aria-hidden="true">
+    <!-- If you prefer an image, swap the <div> for an <img id="confirmIllustration" src="..." alt=""/> -->
+    <div class="confirm-ill">👍</div>
+  </div>
+
+  <!-- Title + message -->
+  <h2 class="confirm-title" id="confirmationTitle" data-i18n="confirmation.success.title">
+    Room reserved !
+  </h2>
+  <p class="confirm-subtext" id="confirmationMessage">
+    <span data-i18n="placeholder.message">A placeholder has been created and the meeting room</span>
+    <span id="placeholderRoomName" class="confirm-name"></span>
+    <span data-i18n="15.minutes.confirmation">is reserved for 15 minutes.</span>
+    <br/>
+    <span data-i18n="confirm.cancel.message01">Please, confirm or cancel your reservation.</span>
+  </p>
+
+  <!-- Room summary block -->
+  <div class="room-block" role="group" aria-label="Room summary">
+    <div class="room-icon" aria-hidden="true">👥</div>
+    <div class="room-meta">
+      <a id="placeholderRoomLink" class="room-name" href="#" target="_blank" rel="noopener">
+        <span id="placeholderRoomName_link">Boreal 12 Room Uranus (18p)</span>
+      </a>
+      <div class="room-building" id="placeholderBuilding">Boreal 1</div>
+    </div>
+  </div>
+
+  <!-- Buttons -->
+  <div id="confirmCancelBtns" class="confirm-actions">
+    <button id="cancelBtn" class="btn btn-secondary btn-lg btn-wide" type="button">
+      <span data-i18n="cancel.button" class="ms-Button-label">Cancel</span>
+    </button>
+    <button id="confirmBtn" class="btn btn-primary btn-lg btn-wide" type="button">
+      <span data-i18n="confirm.button" class="ms-Button-label">Confirm</span>
+    </button>
+  </div>
+
+  <!-- Status + back/close (shown by JS after action) -->
+  <div id="confirmationStatus" data-i18n="confirmation.message" class="confirm-status" aria-live="polite"></div>
+
+  <div id="backBtnDiv" class="confirm-followup" style="display:none;">
+    <button id="backBtn" class="btn btn-secondary btn-lg" type="button">
+      <span data-i18n="back.button" class="ms-Button-label">Back</span>
+    </button>
+    <button id="closeEventPlannerWindow" class="btn btn-primary btn-lg" type="button">
+      <span data-i18n="close.button" class="ms-Button-label">Close</span>
+    </button>
+  </div>
+
+  <div class="confirm-footer" data-i18n="footer.text">© Proximus.com — All rights reserved. Empowering your productivity.</div>
+</section>
 
     <div class="env-bar"><span class="env-dot"></span><span id="env-status">UAT Environment</span></div>
   </div>
