@@ -701,6 +701,7 @@ function showConfirmationUI(roomName, flowResponse = {}) {
 
     // Resets UI back to the initial form
     function resetToForm() {
+	  document.getElementById('confirmCancelBtns').style.display = 'flex' 	
       document.getElementById('meetingForm').style.display = 'flex';
       document.getElementById('confirmationSection').style.display = 'none';
       jsonOutput.textContent = "";
