@@ -30,7 +30,7 @@
   "reservation.confirmed":"✅ Réservation confirmée",
   "initial.meeting.room.reserved":"✅ Salle de réunion initiale réservée",
   "all.attendees.informed":"✅ Tous les participants ont été informés",
-  "close.confirm.title":"✅ Réunion créée et partagée"
+  "close.confirm.title":"✅ Réunion créée et partagée",
   "close.confirm.body":"Vous pouvez maintenant appuyer sur OUI pour fermer et ignorer l'aperçu de la réunion.",
   "yes.button":"Oui",
   "no.button":"Non",
