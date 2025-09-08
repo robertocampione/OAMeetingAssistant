@@ -30,7 +30,8 @@
   "reservation.confirmed":"✅ Réservation confirmée",
   "initial.meeting.room.reserved":"✅ Salle de réunion initiale réservée",
   "all.attendees.informed":"✅ Tous les participants ont été informés",
-  "discard.message":"Vous pouvez maintenant appuyer sur OUI pour fermer et annuler.",
+  "close.confirm.title":"✅ Réunion créée et partagée"
+  "close.confirm.body":"Vous pouvez maintenant appuyer sur OUI pour fermer et ignorer l'aperçu de la réunion.",
   "yes.button":"Oui",
   "no.button":"Non",
   "footer.text":"© Proximus.com — Tous droits réservés. Favoriser votre productivité."
