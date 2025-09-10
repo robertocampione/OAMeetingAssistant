@@ -33,7 +33,7 @@ body{margin:0;background:var(--bg-soft);color:var(--text);font-family:'proximus-
 .icon-btn:hover{background:#f0f1f6}
 
 /* Content */
-.content{padding:16px;display:flex;flex-direction:column;gap:14px}
+.content{padding:16px;display:flex;flex-direction:column;gap:10px}
 .group{display:flex;flex-direction:column;gap:8px}
 .group-title{font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:.04em}
 label{font-size:13px;color:#2b2f38}
@@ -218,8 +218,10 @@ input[type="number"]{width:72px}
 .amenities-wrapper { position: relative; width: 100%; }
 .amenities-toggle {
   display:flex; align-items:center; justify-content:space-between;
-  width:100%; padding:10px 12px; border:1px solid var(--line);
-  border-radius:10px; background:#f0f1f6; cursor:pointer;
+  width:100%; padding:10px 12px; 
+  border:0px;
+  border-radius:var(--field-radius); 
+  background:#f0f1f6; cursor:pointer;
 }
 /* For the "left" column */
 .amenities-toggle > div:first-child {
@@ -232,18 +234,21 @@ input[type="number"]{width:72px}
 }
 .amenities-title { font-weight:600; font-size:12px; color:var(--muted); }
 .amenities-summary { font-size:14px;font-weight: 600;}
-.amenities-right { display:flex; align-items:center; gap:8px; }
+.amenities-right { display:flex; align-items:center; gap:20px; }
 .amenities-badge {
-  min-width:26px; height:26px; border-radius:999px; display:inline-flex;
+  min-width:20px; height:26px; border-radius:999px; display:inline-flex;
   align-items:center; justify-content:center; font-weight:700;
   background:var(--brand); color:#fff; font-size:12px; padding:0 8px;
 }
 .amenities-chevron {
-  display:inline-block; transform:rotate(180deg); transition:transform .15s ease;
-  border: solid #5a34ad; border-width: 0 2px 2px 0; padding:3px;
+  display:inline-block; transform:rotate(-90deg); transition:transform .15s ease;
+  border: solid #5a34ad; 
+  border-width: 0 3px 3px 0; 
+  padding:4px;
   rotate: -45deg; 
+  margin-right: 8px;
 }
-.amenities-open .amenities-chevron { transform:rotate(0); }
+.amenities-open .amenities-chevron { transform:rotate(90deg); }
 
 .amenities-panel {
   position:absolute; inset-inline:0; top:calc(100% + 6px); z-index:10;
@@ -317,13 +322,13 @@ input[type="number"]{width:72px}
 .boxed-field--select::after{
   content:"";
   position:absolute;
-  right:12px;
+  right:20px;
   top:50%;
   transform:translateY(-50%) rotate(45deg);
-  width:6px; height:6px;
-  border:2px solid #5a34ad;
+  width:8px; height:8px;
+  border:3px solid #5a34ad;
   border-left:0; border-top:0;
-  border-radius:1px;
+/*   border-radius:1px; */
 }
 
 /* Visibility helper */
