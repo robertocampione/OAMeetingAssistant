@@ -37,7 +37,7 @@ body{margin:0;background:var(--bg-soft);color:var(--text);font-family:'proximus-
 .group{display:flex;flex-direction:column;gap:8px}
 .group-title{font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:.04em}
 label{font-size:13px;color:#2b2f38}
-select,input[type="text"],input[type="number"]{width:100%;padding:10px 12px;border:1px solid var(--line);border-radius:10px;background:#fff}
+select,input[type="text"],input[type="number"]{width:100%;padding:10px 12px;border:1px solid var(--line);background:#fff}
 input[type="number"]{width:72px}
 .row{display:flex;gap:12px;align-items:center}
 .inline-field{display:flex;flex-direction:column;gap:6px}
@@ -233,7 +233,7 @@ input[type="number"]{width:72px}
   
 }
 .amenities-title { font-weight:600; font-size:12px; color:var(--muted); }
-.amenities-summary { font-size:14px;font-weight: 600;}
+.amenities-summary { font-size:14px;font-weight: 500;}
 .amenities-right { display:flex; align-items:center; gap:20px; }
 .amenities-badge {
   min-width:20px; height:26px; border-radius:999px; display:inline-flex;
@@ -294,7 +294,7 @@ input[type="number"]{width:72px}
 }
 
 .boxed-field__title {
-  font-weight:600;
+  font-weight:500;
   font-size:12px;
   color:var(--muted);
   line-height:1;                 /* compact like amenities title */
