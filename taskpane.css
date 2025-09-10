@@ -13,7 +13,7 @@
 
   --field-bg:#f0f1f6;        /* light grey box like the mock */
   --field-border:#e3e5ee;
-  --field-radius:10px;
+  --field-radius:4px;
   --field-height:38px;       /* keep all boxes same height */
     overflow: hidden;
 }
@@ -284,7 +284,7 @@ input[type="number"]{width:72px}
     display:flex; flex-direction:column; gap:6px;
   padding:10px 12px;
   background:var(--field-bg);
-  border:1px solid var(--field-border);
+/*   border:1px solid var(--field-border); */
   border-radius:var(--field-radius);
 }
 
