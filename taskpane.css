@@ -29,7 +29,7 @@ body{margin:0;background:var(--bg-soft);color:var(--text);font-family:'proximus-
 .brand{display:flex;gap:10px;align-items:center}
 .logo{inline-size:28px;block-size:28px;border-radius:8px;background:var(--brand);display:inline-flex;align-items:center;justify-content:center;color:#fff;font-weight:700}
 .title{font-weight:600;font-size:14px;color:#2b2f38}
-.icon-btn{appearance:none;border:0;background:transparent;padding:6px;border-radius:10px;cursor:pointer}
+.icon-btn{appearance:none;border:0;background:transparent;padding:4px;border-radius:4px;cursor:pointer;font-size:15px;}
 .icon-btn:hover{background:#f0f1f6}
 
 /* Content */
