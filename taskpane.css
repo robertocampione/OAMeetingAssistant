@@ -348,3 +348,10 @@ input[type="number"]{width:72px}
 
 #confirmationSection.show-result #backBtnDiv { display: flex !important; }
 
+/* Warning and Error Messages */
+span.warning-sign {
+    display: block;
+    font-size: 40px;
+    padding-bottom: 10px;
+}
+
