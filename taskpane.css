@@ -73,8 +73,10 @@ input[type="number"]{width:72px}
 
 /* Variant: only bottom-right rounded */
 .btn-primary.br-bottom-right {
-  border-radius: 0; /* reset */
-  border-bottom-right-radius: 16px; /* adjust size as needed */
+/*   border-radius: 0; /* reset */ */
+/*   border-bottom-right-radius: 16px; /* adjust size as needed */ */
+
+  border-radius: 4px 4px 16px 4px;
 }
 
 /* Variant: bottom-left and bottom-right rounded */
