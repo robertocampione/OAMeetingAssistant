@@ -86,6 +86,14 @@ input[type="number"]{width:72px}
   border-bottom-right-radius: 16px;
 }
 
+.btn-primary:hover{
+  background: rgba(255, 255, 255, 0.4);
+  color: #5c2d91;
+  -webkit-backdrop-filter: blur(30px);
+  backdrop-filter: blur(30px);
+  border: 1px solid #5c2d91;
+}
+
 /* 2. Secondary Lilac Button */
 .btn-secondary {
   background: #E9D7F7; /* light lilac */
