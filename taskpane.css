@@ -92,6 +92,7 @@ input[type="number"]{width:72px}
   -webkit-backdrop-filter: blur(30px);
   backdrop-filter: blur(30px);
   border: 1px solid #5c2d91;
+  height: 46px;
 }
 
 /* 2. Secondary Lilac Button */
