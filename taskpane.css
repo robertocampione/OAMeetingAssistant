@@ -114,6 +114,7 @@ input[type="number"]{width:72px}
 .btn-lg{padding:14px 22px;font-size:15px;border-radius:0px}
 .btn-wide{
   flex:1;
+/*   disabled temprorarly */
 /*   min-width:120px */
 }
 .confirm-actions{display:flex;gap:12px;justify-content:center;margin-top:14px}
