@@ -147,6 +147,9 @@ input[type="number"]{width:72px}
 .confirm-card.is-success .confirm-ill{background:#e9f7ef;color:#1b7f4a}
 .confirm-card.is-error   .confirm-ill{background:#fdeaea;color:#b42318}
 .confirm-card.is-cancel .confirm-ill{ background:#efe7ff; color:#5a34ad; }
+.pxs-respond-img {
+  width: 140px;
+}
 
 .confirm-title{margin:20px;font-size:18px;line-height:1.25;font-weight:800;color:#2b2f38}
 .confirm-subtext{margin:20px;color:#444;font-size:14px}
