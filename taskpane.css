@@ -112,7 +112,10 @@ input[type="number"]{width:72px}
 /* ===== Confirmation (v2) ===== */
 /* Buttons area */
 .btn-lg{padding:14px 22px;font-size:15px;border-radius:0px}
-.btn-wide{flex:1;min-width:120px}
+.btn-wide{
+  flex:1;
+/*   min-width:120px */
+}
 .confirm-actions{display:flex;gap:12px;justify-content:center;margin-top:14px}
 
 #generateJson{margin-top:8px;width:100%}
@@ -172,7 +175,9 @@ input[type="number"]{width:72px}
 
 /* Wider buttons (as per mock) */
 .btn-lg{ padding:16px 26px; font-size:16px; border-radius:14px; }
-.btn-wide{ min-width:168px; }
+.btn-wide{ 
+/*   min-width:168px;  */
+}
 
 /* Optional: center body text for error state while title stays centered */
 .is-error .confirm-subtext, .is-error .room-block{ text-align:center; margin-left:auto; margin-right:auto; }
