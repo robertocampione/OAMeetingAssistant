@@ -235,7 +235,7 @@ input[type="number"]{width:72px}
   border-color:var(--brand)
 }
 .lang-bar a:hover {
-/*     background: var(--brand); */
+    background: var(--brand);
     color: #fff;
 }
   
