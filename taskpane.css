@@ -218,7 +218,10 @@ input[type="number"]{width:72px}
 .panel{width:360px;background:#fff;border-radius:16px;box-shadow:0 20px 60px rgba(0,0,0,.25)}
 .panel .head{display:flex;align-items:center;justify-content:space-between;padding:14px 16px;border-bottom:1px solid var(--line)}
 .panel .body{padding:16px;display:flex;flex-direction:column;gap:14px}
-.lang-bar{display:flex;gap:8px}
+.lang-bar{
+  display:flex;
+  gap:8px
+}
 .lang-bar a {
   padding:6px 10px;
   border:1px solid var(--line);
