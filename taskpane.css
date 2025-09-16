@@ -104,6 +104,7 @@ input[type="number"]{width:72px}
   background: #E9D7F7; /* light lilac */
   color: var(--brand, #6A1B9A); /* purple text */
   border-radius: 8px; /* small rounded corners */
+  height: 44px;
 }
 
 .btn-secondary:hover {
