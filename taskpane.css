@@ -228,11 +228,12 @@ input[type="number"]{width:72px}
   cursor: pointer;
   transition: 0.2s;
 }
-.lang-bar a.active-language{border-color:var(--brand)}
+.lang-bar a.active-language {
+  border-color:var(--brand)
+}
 .lang-bar a:hover {
     background: var(--brand);
     color: #fff;
-  
 }
   
 .toggle{display:flex;align-items:center;justify-content:space-between;border:1px solid var(--line);border-radius:10px;padding:10px 12px}
