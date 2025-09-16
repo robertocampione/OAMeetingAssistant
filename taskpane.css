@@ -113,7 +113,11 @@ input[type="number"]{width:72px}
 
 /* ===== Confirmation (v2) ===== */
 /* Buttons area */
-.btn-lg{padding:14px 22px;font-size:15px;border-radius:0px}
+.btn-lg{
+  padding:14px 22px;
+  font-size:15px;
+  border-radius:0px
+}
 .btn-wide{
   flex:1;
 /*   disabled temprorarly */
@@ -178,7 +182,10 @@ input[type="number"]{width:72px}
 .confirm-actions{ justify-content:center; gap:14px; margin-top:16px; display: flex !important}
 
 /* Wider buttons (as per mock) */
-.btn-lg{ padding:16px 26px; font-size:16px; border-radius:4px; }
+.btn-lg{ 
+/*   padding:16px 26px;  */
+  font-size:16px; 
+  border-radius:4px; }
 .btn-wide{ 
 /*   min-width:168px;  */
 }
