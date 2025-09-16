@@ -118,6 +118,7 @@ input[type="number"]{width:72px}
   flex:1;
 /*   disabled temprorarly */
 /*   min-width:120px */
+  
 }
 .confirm-actions{display:flex;gap:12px;justify-content:center;margin-top:14px}
 
