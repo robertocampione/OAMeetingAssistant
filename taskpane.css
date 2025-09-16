@@ -229,7 +229,7 @@ input[type="number"]{width:72px}
   transition: 0.2s;
 }
 .lang-bar a.active-language{border-color:var(--brand)}
-.lang-bar:hover {
+.lang-bar a:hover {
     background: var(--brand);
     color: #fff;
 }
