@@ -196,8 +196,17 @@ input[type="number"]{width:72px}
 /* Footer line */
 .confirm-footer{border-top:1px solid var(--line);margin-top:20px;padding-top:10px;color:#888;font-size:.65em}
 /* Room summary block */
-.room-block{display:flex;gap:10px;align-items:flex-start;text-align:left;margin:6px 0 2px 0;
-  padding:12px;border:1px solid var(--line);background:#f7f7fb;border-radius:12px}
+.room-block{
+  display:flex;
+  gap:10px;
+  align-items:flex-start;
+  text-align:left;
+  margin:6px 0 2px 0;
+  padding:12px;
+/*   border:1px solid var(--line); */
+  background:#f7f7fb;
+  border-radius:12px
+}
 .room-icon{font-size:18px;margin-top:1px}
 .room-meta{display:flex;flex-direction:column;gap:2px}
 .room-name{font-weight:700;color:#2b2f38;text-decoration:none}
