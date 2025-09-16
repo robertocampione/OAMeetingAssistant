@@ -62,6 +62,7 @@ input[type="number"]{width:72px}
   transition: all 0.2s ease-in-out 0s, -webkit-backdrop-filter 0s;
   transition: all 0.2s ease-in-out 0s, backdrop-filter 0s;
   transition: all 0.2s ease-in-out 0s, backdrop-filter 0s, -webkit-backdrop-filter 0s;
+  height: 44px;
 }
 
 /* 1. Primary Purple Button */
@@ -95,7 +96,7 @@ input[type="number"]{width:72px}
   -webkit-backdrop-filter: blur(30px);
   backdrop-filter: blur(30px);
   border: 1px solid #5c2d91;
-  height: 46px;
+  height: 44px;
 }
 
 /* 2. Secondary Lilac Button */
