@@ -256,7 +256,7 @@ input[type="number"]{width:72px}
   color: var(--brand, #6A1B9A);
   font-weight: bold;
 }
-.env-dot{inline-size:8px;block-size:8px;border-radius:99px;background:#fff;opacity:.85}
+.env-dot{inline-size:8px;block-size:8px;border-radius:99px;background:#fff;opacity:.85;border: 1px solid;}
 .env-bar-status{letter-spacing:3px;text-shadow:0 0 1px #1a1818}
 
 /* Responsive */
