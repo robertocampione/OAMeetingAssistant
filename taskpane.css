@@ -114,7 +114,7 @@ input[type="number"]{width:72px}
 /* ===== Confirmation (v2) ===== */
 /* Buttons area */
 .btn-lg{
-  padding:14px 22px;
+/*   padding:14px 22px; */
   font-size:15px;
   border-radius:0px
 }
