@@ -245,7 +245,17 @@ input[type="number"]{width:72px}
 /* Environment bar (retro‑compat) */
 .green-gradient{background:linear-gradient(to bottom,#ffffff 0%,#ffffff 95%,#a5c956 100%)}
 .red-gradient{background:linear-gradient(to bottom,#ffffff 0%,#ffffff 95%,#ffb2b2 100%)}
-.env-bar{display:flex;align-items:center;justify-content:center;gap:8px;padding:8px 10px;border-top:1px solid var(--line);font-size:12px;color:#fff}
+.env-bar{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:8px;
+  padding:8px 10px;
+  border-top:1px solid var(--line);
+  font-size:12px;
+  color: var(--brand, #6A1B9A);
+  font-weight: bold;
+}
 .env-dot{inline-size:8px;block-size:8px;border-radius:99px;background:#fff;opacity:.85}
 .env-bar-status{letter-spacing:3px;text-shadow:0 0 1px #1a1818}
 
