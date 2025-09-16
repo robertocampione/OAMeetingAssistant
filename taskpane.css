@@ -55,7 +55,7 @@ input[type="number"]{width:72px}
 .btn {
   appearance: none;
   border: 0;
-  padding: 12px 24px;
+/*   padding: 12px 24px; */
   font-weight: 600;
   cursor: pointer;
   font-size: 14px;
@@ -177,7 +177,7 @@ input[type="number"]{width:72px}
 .confirm-actions{ justify-content:center; gap:14px; margin-top:16px; display: flex !important}
 
 /* Wider buttons (as per mock) */
-.btn-lg{ padding:16px 26px; font-size:16px; border-radius:14px; }
+.btn-lg{ padding:16px 26px; font-size:16px; border-radius:4px; }
 .btn-wide{ 
 /*   min-width:168px;  */
 }
