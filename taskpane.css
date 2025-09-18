@@ -53,16 +53,42 @@ input[type="number"]{width:72px}
 .cta{display:flex;flex-direction:column;gap:10px}
 /* Base button */
 .btn {
-  appearance: none;
+/*   appearance: none;
   border: 0;
-/*   padding: 12px 24px; */
   font-weight: 600;
   cursor: pointer;
   font-size: 14px;
   transition: all 0.2s ease-in-out 0s, -webkit-backdrop-filter 0s;
   transition: all 0.2s ease-in-out 0s, backdrop-filter 0s;
   transition: all 0.2s ease-in-out 0s, backdrop-filter 0s, -webkit-backdrop-filter 0s;
-  height: 44px;
+  height: 44px; */
+
+  
+ appearance: none;
+  -webkit-appearance: none; /* for Safari */
+  border: 0;
+  box-sizing: border-box;
+
+  display: inline-flex;              /* enable centering */
+  align-items: center;               /* vertical center */
+  justify-content: center;           /* horizontal center */
+  gap: 0.5rem;                       /* space if you add an icon */
+
+  padding: 0 16px;                   /* horizontal padding */
+  min-height: 44px;                  /* touch target size */
+  /* height: 44px; */                /* use fixed height only if you don't want the button to grow when text wraps */
+
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 1;                    /* avoids extra vertical space from fonts */
+  text-align: center;
+  cursor: pointer;
+  user-select: none;
+
+  transition: background-color .2s ease,
+              color .2s ease,
+              box-shadow .2s ease,
+              transform .1s ease;    /* avoid 'all' for better perf */
 }
 
 /* 1. Primary Purple Button */
