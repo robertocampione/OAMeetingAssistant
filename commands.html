@@ -1,26 +1,35 @@
-<!doctype html><html>
+<!doctype html>
+<html>
   <head>
     <meta charset="utf-8" />
     <title>OA Meeting Room Assistant - Stub</title>
-    <!-- Hosted Office.js --><script type="text/javascript" src="https://appsforoffice.microsoft.com/lib/1/hosted/office.js"></script>
+    <!-- Hosted Office.js -->
+    <script src="https://appsforoffice.microsoft.com/lib/1/hosted/office.js"></script>
 
-    <script>// When Office is ready, register the OnSend handler so Outlook can call it.Office.onReady(function () {
+    <script>
+      // When Office is ready, register the OnSend handler so Outlook can call it.
+      Office.onReady(function () {
         try {
-          // Newer event-based model (recommended)if (window.Office && Office.actions && typeof Office.actions.associate === "function") {
+          // Newer event-based model (recommended)
+          if (window.Office && Office.actions && typeof Office.actions.associate === "function") {
             Office.actions.associate("onAppointmentSendHandler", function (event) {
               try {
-                // No-op: always allow the send                event.completed({ allowEvent: true });
+                // No-op: always allow the send
+                event.completed({ allowEvent: true });
               } catch (e) {
-                // fallback: ensure we always allow send if anything goes wrongtry { event.completed({ allowEvent: true }); } catch (_) {}
+                // fallback: ensure we always allow send if anything goes wrong
+                try { event.completed({ allowEvent: true }); } catch (_) {}
               }
             });
           } else {
-            // Older or unexpected host: expose a global handler name (defensive)window.onAppointmentSendHandler = function (event) {
+            // Older or unexpected host: expose a global handler name (defensive)
+            window.onAppointmentSendHandler = function (event) {
               try { event.completed({ allowEvent: true }); } catch (e) {}
             };
           }
         } catch (ex) {
-          // nothing to do — ensure we don't throw during loadconsole.warn("OA stub load error", ex);
+          // nothing to do — ensure we don't throw during load
+          console.warn("OA stub load error", ex);
         }
       });
     </script>
