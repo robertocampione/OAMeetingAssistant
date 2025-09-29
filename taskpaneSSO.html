@@ -263,6 +263,21 @@
         <span id="durationWarningIcon" class="modal-icon" aria-hidden="true">⚠️</span>
         <span id="durationWarningMessage">Meetings longer than 24 hours are not allowed. Please change the meeting duration to proceed.</span>
       </p>
+      <div id="durationTechSection" class="modal-tech" hidden>
+        <button
+          id="durationTechToggle"
+          class="modal-tech__toggle"
+          type="button"
+          aria-expanded="false"
+          aria-controls="durationTechnicalMessage"
+          data-show-label="Show technical details"
+          data-hide-label="Hide technical details"
+        >
+          <span id="durationTechToggleIcon" class="modal-tech__icon" aria-hidden="true">▾</span>
+          <span id="durationTechToggleText" class="modal-tech__text">Show technical details</span>
+        </button>
+        <pre id="durationTechnicalMessage" class="modal-tech__message" hidden></pre>
+      </div>
       <div class="modal-actions">
         <button id="durationWarningClose" class="ms-Button ms-Button--primary btn btn-secondary btn-lg btn-wide" type="button">Close</button>
       </div>
