@@ -304,6 +304,13 @@ input[type="number"]{width:72px}
 .modal-card--warning .modal-icon{color:#f4b400}
 .modal-card--error .modal-icon{color:#d93025}
 .modal-actions{display:flex;gap:12px;justify-content:center;margin-top:16px}
+.modal-tech{margin-top:16px;text-align:left}
+.modal-tech__toggle{display:flex;align-items:center;gap:8px;width:100%;padding:8px 0;border:none;background:transparent;font-weight:600;color:var(--brand,#6A1B9A);cursor:pointer;text-align:left}
+.modal-tech__toggle:focus-visible{outline:2px solid var(--brand,#6A1B9A);outline-offset:2px}
+.modal-tech__toggle:hover{color:#53238f}
+.modal-tech__icon{display:inline-flex;transition:transform .2s ease;font-size:14px}
+.modal-tech__toggle[aria-expanded="true"] .modal-tech__icon{transform:rotate(180deg)}
+.modal-tech__message{margin-top:8px;padding:12px;border-radius:10px;background:#f5f6fb;border:1px solid #e0e3f1;font-family:"SFMono-Regular",Consolas,"Liberation Mono",Menlo,monospace;font-size:12px;line-height:1.5;color:#2b2f38;white-space:pre-wrap;word-break:break-word}
 
 .toggle-container {
   display: flex; align-items: center; gap: 10px;
