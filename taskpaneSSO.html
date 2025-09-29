@@ -257,6 +257,18 @@
   </div>
 </div>
 
+  <div id="durationWarningOverlay" class="modal-overlay" role="alertdialog" aria-modal="true" aria-live="assertive" aria-hidden="true">
+    <div class="modal-card modal-card--warning">
+      <p class="modal-message">
+        <span id="durationWarningIcon" class="modal-icon" aria-hidden="true">⚠️</span>
+        <span id="durationWarningMessage">Meetings longer than 24 hours are not allowed. Please change the meeting duration to proceed.</span>
+      </p>
+      <div class="modal-actions">
+        <button id="durationWarningClose" class="ms-Button ms-Button--primary btn btn-secondary btn-lg btn-wide" type="button">Close</button>
+      </div>
+    </div>
+  </div>
+
 
   <script src="https://proximuscorp.sharepoint.com/:i:/r/sites/TS2110913/Shared%20Documents/OAMeetingAssistant/javascript/controls/config.js"></script>
   <script src="https://proximuscorp.sharepoint.com/:i:/r/sites/TS2110913/Shared%20Documents/OAMeetingAssistant/javascript/taskpaneSSO.js"></script>
