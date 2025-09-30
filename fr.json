@@ -36,6 +36,7 @@
   "no.button":"Non",
   "footer.text":"© Proximus.com — Tous droits réservés. Favoriser votre productivité.",
   "no.room.found.message":"Désolé, nous n'avons trouvé aucune salle disponible. Essayez d'ajuster vos critères ou vérifiez d'autres créneaux horaires pour trouver une salle qui correspond à vos besoins.",
-  "show.technical.details":"Afficher les détails techniques"
+  "show.technical.details":"Afficher les détails techniques",
+  "hide.technical.details":"Masquer les détails techniques"
 }
  
