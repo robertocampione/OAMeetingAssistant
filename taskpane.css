@@ -188,8 +188,15 @@ input[type="number"]{width:72px}
 .confirm-card.is-success .confirm-ill{background:#e9f7ef;color:#1b7f4a}
 .confirm-card.is-error   .confirm-ill{background:#fdeaea;color:#b42318}
 .confirm-card.is-cancel .confirm-ill{ background:#efe7ff; color:#5a34ad; }
+.confirm-card.is-empty  .confirm-ill{background:#f4f4f8;color:#5a34ad}
 .pxs-respond-img {
   width: 100px;
+}
+
+.pxs-respond-emoji {
+  display: block;
+  font-size: 42px;
+  line-height: 1;
 }
 
 .confirm-title{margin:20px;font-size:18px;line-height:1.25;font-weight:800;color:#2b2f38}
