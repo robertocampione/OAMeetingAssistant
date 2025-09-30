@@ -302,11 +302,11 @@ input[type="number"]{width:72px}
 .modal-overlay{position:fixed;inset:0;display:none;align-items:center;justify-content:center;background:rgba(0,0,0,.4);z-index:9999}
 .modal-overlay.is-visible{display:flex}
 .modal-card{background:#fff;border-radius:16px;min-width:300px;max-width:420px;padding:20px;box-shadow:0 8px 30px rgba(0,0,0,.25);text-align:center;margin:10px;border-top:4px solid transparent}
-.modal-card--info{border-top-color:#1a73e8}
+.modal-card--info{border-top-color:#996ce9c9}
 .modal-card--warning{border-top-color:#f4b400}
 .modal-card--error{border-top-color:#d93025}
 .modal-message{display:flex;align-items:flex-start;gap:12px;font-size:14px;line-height:1.5;color:#2b2f38;margin:0;text-align:left}
-.modal-icon{font-size:28px;line-height:1}
+.modal-icon{font-size:48px;line-height:1}
 .modal-card--info .modal-icon{color:#1a73e8}
 .modal-card--warning .modal-icon{color:#f4b400}
 .modal-card--error .modal-icon{color:#d93025}
