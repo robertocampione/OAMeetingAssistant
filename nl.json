@@ -34,6 +34,7 @@
   "close.confirm.body":"Nu kunt u op JA drukken om het voorbeeld van de vergadering te sluiten en te verwijderen.",
   "yes.button":"Ja",
   "no.button":"Nee",
-  "footer.text":"© Proximus.com — Alle rechten voorbehouden. Verhoog uw productiviteit."
+  "footer.text":"© Proximus.com — Alle rechten voorbehouden. Verhoog uw productiviteit.",
+  "no.room.found.message":"Sorry, we hebben geen beschikbare ruimte gevonden. Probeer uw criteria aan te passen of controleer andere tijdsloten om een ruimte te vinden die aan uw vereisten voldoet."
 }
  
