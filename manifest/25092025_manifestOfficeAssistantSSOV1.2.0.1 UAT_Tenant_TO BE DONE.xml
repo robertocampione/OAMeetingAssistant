@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<OfficeApp xmlns="http://schemas.microsoft.com/office/appforoffice/1.1"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xmlns:bt="http://schemas.microsoft.com/office/officeappbasictypes/1.0"
+           xsi:type="MailApp">
+  <Id>eaf521b3-24cd-41ab-9187-2daa59c50942</Id>
+  <Version>1.2.0.1</Version>
+  <ProviderName>Proximus</ProviderName>
+  <DefaultLocale>en-US</DefaultLocale>
+  <DisplayName DefaultValue="OA Meeting Room Assistant"/>
+  <Description DefaultValue="Book your meeting room in a Proximus Building."/>
+  <IconUrl DefaultValue="https://proximuscorp.sharepoint.com/:i:/r/sites/TS2110913/Shared%20Documents/OAMeetingAssistant/assets/logo-proximus4.png"/>
+  <HighResolutionIconUrl DefaultValue="https://proximuscorp.sharepoint.com/:i:/r/sites/TS2110913/Shared%20Documents/OAMeetingAssistant/assets/logo-proximus5.png"/>
+  <SupportUrl DefaultValue="https://www.proximus.be/help"/>
+  <AppDomains>
+    <AppDomain>https://www.proximus.be</AppDomain>
+    <AppDomain>https://robertocampione.github.io/</AppDomain>
+    <AppDomain>https://proximuscorp.sharepoint.com/</AppDomain>
+  </AppDomains>
+  <Hosts>
+    <Host Name="Mailbox"/>
+  </Hosts>
+  <Requirements>
+    <Sets>
+      <Set Name="Mailbox" MinVersion="1.1"/>
+    </Sets>
+  </Requirements>
+  <FormSettings>
+    <Form xsi:type="ItemRead">
+      <DesktopSettings>
+        <SourceLocation DefaultValue="https://robertocampione.github.io/OAMeetingAssistant/taskpaneSSO.html"/>
+        <RequestedHeight>250</RequestedHeight>
+      </DesktopSettings>
+    </Form>
+  </FormSettings>
+  <Permissions>ReadWriteMailbox</Permissions>
+
+  <!-- Keep your existing activation rules -->
+  <Rule xsi:type="RuleCollection" Mode="Or">
+    <Rule xsi:type="ItemIs" ItemType="Appointment" FormType="Edit"/>
+    <Rule xsi:type="ItemIs" ItemType="Appointment" FormType="Read"/>
+    <Rule xsi:type="ItemHasKnownEntity" EntityType="Url"/>
+  </Rule>
+
+  <DisableEntityHighlighting>false</DisableEntityHighlighting>
+
+  <VersionOverrides xmlns="http://schemas.microsoft.com/office/mailappversionoverrides" xsi:type="VersionOverridesV1_0">
+    <VersionOverrides xmlns="http://schemas.microsoft.com/office/mailappversionoverrides/1.1" xsi:type="VersionOverridesV1_1">
+
+      <!-- Increase requirement set for Smart Alerts enhancements -->
+      <Requirements>
+        <bt:Sets DefaultMinVersion="1.15">
+          <bt:Set Name="Mailbox"/>
+        </bt:Sets>
+      </Requirements>
+
+      <Hosts>
+        <Host xsi:type="MailHost">
+
+          <!-- Event-based activation (Smart Alerts) runtime -->
+          <Runtimes>
+            <!-- Used by OWA/Mac/new Outlook (WebView runtime) -->
+            <Runtime resid="WebViewRuntime.Url">
+              <!-- Fallback for classic Outlook on Windows -->
+              <Override type="javascript" resid="JSRuntime.Url"/>
+            </Runtime>
+          </Runtimes>
+
+          <DesktopFormFactor>
+
+            <!-- Enable shared/delegated mailbox & shared folders -->
+            <SupportsSharedFolders>true</SupportsSharedFolders>
+
+            <!-- Function file for ribbon commands -->
+            <FunctionFile resid="Commands.Url"/>
+
+            <!-- Organizer ribbon group -->
+            <ExtensionPoint xsi:type="AppointmentOrganizerCommandSurface">
+              <OfficeTab id="TabMeeting">
+                <Group id="orgGroup">
+                  <Label resid="GroupLabel"/>
+                  <Control xsi:type="Button" id="appointmentOpenPaneButtonOrg">
+                    <Label resid="TaskpaneButton.Label"/>
+                    <Supertip>
+                      <Title resid="TaskpaneButton.Label"/>
+                      <Description resid="TaskpaneButton.Tooltip"/>
+                    </Supertip>
+                    <Icon>
+                      <bt:Image size="16" resid="Icon.16x16"/>
+                      <bt:Image size="32" resid="Icon.32x32"/>
+                      <bt:Image size="80" resid="Icon.80x80"/>
+                    </Icon>
+                    <Action xsi:type="ShowTaskpane">
+                      <SourceLocation resid="Taskpane.Url"/>
+                    </Action>
+                  </Control>
+                </Group>
+              </OfficeTab>
+            </ExtensionPoint>
+
+            <!-- Message read buttons (attendance) -->
+            <ExtensionPoint xsi:type="MessageReadCommandSurface">
+              <OfficeTab id="TabDefault">
+                <Group id="msgReadGroup">
+                  <Label resid="AttendanceGroup.Label"/>
+                  <Control xsi:type="Button" id="btnInPerson2">
+                    <Label resid="InPersonButton.Label"/>
+                    <Supertip>
+                      <Title resid="InPersonButton.Label"/>
+                      <Description resid="InPersonButton.Tooltip"/>
+                    </Supertip>
+                    <Icon>
+                      <bt:Image size="16" resid="Icon.InPerson.16x16"/>
+                      <bt:Image size="32" resid="Icon.InPerson.32x32"/>
+                      <bt:Image size="80" resid="Icon.InPerson.80x80"/>
+                    </Icon>
+                    <Action xsi:type="ExecuteFunction">
+                      <FunctionName>inPersonAttendance</FunctionName>
+                    </Action>
+                  </Control>
+                  <Control xsi:type="Button" id="btnVirtual2">
+                    <Label resid="VirtualButton.Label"/>
+                    <Supertip>
+                      <Title resid="VirtualButton.Label"/>
+                      <Description resid="VirtualButton.Tooltip"/>
+                    </Supertip>
+                    <Icon>
+                      <bt:Image size="16" resid="Icon.Online.16x16"/>
+                      <bt:Image size="32" resid="Icon.Online.32x32"/>
+                      <bt:Image size="80" resid="Icon.Online.80x80"/>
+                    </Icon>
+                    <Action xsi:type="ExecuteFunction">
+                      <FunctionName>virtualAttendance</FunctionName>
+                    </Action>
+                  </Control>
+                </Group>
+              </OfficeTab>
+            </ExtensionPoint>
+
+          </DesktopFormFactor>
+        </Host>
+      </Hosts>
+
+      <Resources>
+        <bt:Images>
+          <bt:Image id="Icon.16x16" DefaultValue="https://proximuscorp.sharepoint.com/:i:/r/sites/TS2110913/Shared%20Documents/OAMeetingAssistant/assets/icon-16.png"/>
+          <bt:Image id="Icon.32x32" DefaultValue="https://proximuscorp.sharepoint.com/:i:/r/sites/TS2110913/Shared%20Documents/OAMeetingAssistant/assets/icon-32.png"/>
+          <bt:Image id="Icon.80x80" DefaultValue="https://proximuscorp.sharepoint.com/:i:/r/sites/TS2110913/Shared%20Documents/OAMeetingAssistant/assets/icon-80.png"/>
+
+          <bt:Image id="Icon.InPerson.16x16" DefaultValue="https://proximuscorp.sharepoint.com/:i:/r/sites/TS2110913/Shared%20Documents/OAMeetingAssistant/assets/inperson-16.png"/>
+          <bt:Image id="Icon.InPerson.32x32" DefaultValue="https://proximuscorp.sharepoint.com/:i:/r/sites/TS2110913/Shared%20Documents/OAMeetingAssistant/assets/inperson-32.png"/>
+          <bt:Image id="Icon.InPerson.80x80" DefaultValue="https://proximuscorp.sharepoint.com/:i:/r/sites/TS2110913/Shared%20Documents/OAMeetingAssistant/assets/inperson-80.png"/>
+
+          <bt:Image id="Icon.Online.16x16" DefaultValue="https://proximuscorp.sharepoint.com/:i:/r/sites/TS2110913/Shared%20Documents/OAMeetingAssistant/assets/online-16.png"/>
+          <bt:Image id="Icon.Online.32x32" DefaultValue="https://proximuscorp.sharepoint.com/:i:/r/sites/TS2110913/Shared%20Documents/OAMeetingAssistant/assets/online-32.png"/>
+          <bt:Image id="Icon.Online.80x80" DefaultValue="https://proximuscorp.sharepoint.com/:i:/r/sites/TS2110913/Shared%20Documents/OAMeetingAssistant/assets/online-80.png"/>
+        </bt:Images>
+
+        <bt:Urls>
+          <!-- Existing -->
+          <bt:Url id="Commands.Url" DefaultValue="https://robertocampione.github.io/OAMeetingAssistant/attendanceSSO.html"/>
+          <bt:Url id="Taskpane.Url" DefaultValue="https://robertocampione.github.io/OAMeetingAssistant/taskpaneSSO.html"/>
+
+          <!-- Event-based runtime endpoints -->
+          <!-- TODO: point this to an html that loads your event handler bundle -->
+          <bt:Url id="WebViewRuntime.Url" DefaultValue="https://robertocampione.github.io/OAMeetingAssistant/commands.html"/>
+          <!-- TODO: point this to your standalone JS for classic Outlook on Windows -->
+          <bt:Url id="JSRuntime.Url" DefaultValue="https://robertocampione.github.io/OAMeetingAssistant/launchevent.js"/>
+        </bt:Urls>
+
+        <bt:ShortStrings>
+          <bt:String id="GroupLabel" DefaultValue="Proximus Add-in"/>
+          <bt:String id="TaskpaneButton.Label" DefaultValue="Show Task Panel"/>
+          <bt:String id="AttendanceGroup.Label" DefaultValue="Attendance"/>
+          <bt:String id="AttendanceMenu.Label" DefaultValue="Specify Presence"/>
+          <bt:String id="InPersonButton.Label" DefaultValue="In person"/>
+          <bt:String id="VirtualButton.Label" DefaultValue="Online"/>
+        </bt:ShortStrings>
+
+        <bt:LongStrings>
+          <bt:String id="TaskpaneButton.Tooltip" DefaultValue="Opens a pane displaying all available properties."/>
+          <bt:String id="InPersonButton.Tooltip" DefaultValue="Confirm in-person attendance for this meeting."/>
+          <bt:String id="VirtualButton.Tooltip" DefaultValue="Confirm online attendance for this meeting."/>
+        </bt:LongStrings>
+      </Resources>
+
+      <!-- WebApplicationInfo as-is (edited if you change AAD app) -->
+      <WebApplicationInfo>
+        <Id>e8f07e89-4853-4f09-abd9-bbd398d2875c</Id>
+        <Resource>api://robertocampione.github.io/OAMeetingAssistant/e8f07e89-4853-4f09-abd9-bbd398d2875c</Resource>
+        <Scopes>
+          <Scope>User.Read</Scope>
+          <Scope>profile</Scope>
+        </Scopes>
+      </WebApplicationInfo>
+
+    </VersionOverrides>
+  </VersionOverrides>
+</OfficeApp>
