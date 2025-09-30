@@ -34,5 +34,6 @@
   "close.confirm.body":"Now you can Press YES to Close and Discard the meeting preview.",
   "yes.button":"Yes",
   "no.button":"No",
-  "footer.text":"© Proximus.com — All rights reserved. Empowering your productivity."
+  "footer.text":"© Proximus.com — All rights reserved. Empowering your productivity.",
+  "no.room.found.message":"Sorry, we didn't find any room avaiable, Try adjusting your criteria or check different time slots to find a room that match your requirements."
   }
