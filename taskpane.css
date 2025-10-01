@@ -459,10 +459,12 @@ input[type="number"]{width:72px}
 .is-hidden { display: none !important; }
 /* If something sets display:block inline, force the form back to flex */
 #meetingForm[style*="display: block"] { display: flex !important; }
-}
+
 /* Fix invalid margin */
 .confirm-subtext{ margin: 2px 0 20px 0; }
 
+.app-version {
+  font-size: 10px;
 }
 
 /* Result view: hide pre-action content, show follow-up */
