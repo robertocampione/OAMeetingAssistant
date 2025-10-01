@@ -37,6 +37,10 @@
   "footer.text":"© Proximus.com — Tous droits réservés. Favoriser votre productivité.",
   "no.room.found.message":"Désolé, nous n'avons trouvé aucune salle disponible. Essayez d'ajuster vos critères ou vérifiez d'autres créneaux horaires pour trouver une salle qui correspond à vos besoins.",
   "show.technical.details":"Afficher les détails techniques",
-  "hide.technical.details":"Masquer les détails techniques"
+  "hide.technical.details":"Masquer les détails techniques",
+  "Business.unit.amenities.error":"Échec lors de la récupération de Business-Unit ou des équipements. Veuillez fermer et rouvrir Outlook, ou effectuer un rafraîchissement complet du navigateur si vous utilisez Outlook Web en appuyant sur [Ctrl + Shift + R] sur votre clavier.",
+  "createing.allocating.room.error":"Erreur lors de la création de la réunion ou de l’attribution de la salle de réunion.",
+  "24hour.meeting.warning":"Les réunions de plus de 24 heures ne sont pas autorisées. Veuillez modifier la durée de la réunion pour continuer.",
+  "sso.error":"La connexion SSO a échoué, le message contextuel est bloqué par le navigateur. Lorsqu’une fenêtre contextuelle est bloquée dans le navigateur Edge ou Chrome, une icône spéciale apparaît à droite de la barre d’adresse avec un carré barré au milieu. Cliquez dessus pour autoriser les fenêtres contextuelles. Ce paramètre n’autorisera les fenêtres contextuelles que pour le site Web actuel."  
 }
  
