@@ -266,7 +266,9 @@ input[type="number"]{width:72px}
   transition: 0.2s;
 }
 .lang-bar a.active-language {
-  border-color:var(--brand)
+  border-color:var(--brand);
+  color: var(--bg);
+  background: var(--brand);
 }
 .lang-bar a:hover {
     background: var(--brand);
