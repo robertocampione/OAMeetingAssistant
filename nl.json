@@ -37,6 +37,10 @@
   "footer.text":"© Proximus.com — Alle rechten voorbehouden. Verhoog uw productiviteit.",
   "no.room.found.message":"Sorry, we hebben geen beschikbare ruimte gevonden. Probeer uw criteria aan te passen of controleer andere tijdsloten om een ruimte te vinden die aan uw vereisten voldoet.",
   "show.technical.details":"Technische details weergeven",
-  "hide.technical.details":"Technische details verbergen "
+  "hide.technical.details":"Technische details verbergen ",
+  "Business.unit.amenities.error":"Kan Business-Unit of voorzieningen niet ophalen. Sluit en heropen Outlook, of voer een harde vernieuwingsactie uit in de browser als u Outlook Web gebruikt door op [Ctrl + Shift + R] op uw toetsenbord te drukken.",
+  "createing.allocating.room.error":"Fout bij het aanmaken van de vergadering of het toewijzen van de vergaderruimte.",
+  "24hour.meeting.warning":"Vergaderingen langer dan 24 uur zijn niet toegestaan. Pas de vergaderduur aan om verder te gaan.",
+  "sso.error":"SSO-aanmelding is mislukt, het pop-upbericht wordt geblokkeerd door de browser. Wanneer een pop-up wordt geblokkeerd in de Edge- of Chrome-browser, verschijnt er een speciaal pictogram aan de rechterkant van de adresbalk met een vierkant pictogram met een kruis in het midden. Klik erop om pop-ups toe te staan. Deze instelling staat de pop-up alleen toe voor de huidige website."
 }
  
