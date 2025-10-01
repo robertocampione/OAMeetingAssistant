@@ -37,5 +37,9 @@
   "footer.text":"© Proximus.com — All rights reserved. Empowering your productivity.",
   "no.room.found.message":"Sorry, we didn't find any room avaiable, Try adjusting your criteria or check different time slots to find a room that match your requirements.",
   "show.technical.details":"Show Technical Details",
-  "hide.technical.details":"Hide Technical Details"
+  "hide.technical.details":"Hide Technical Details",
+  "Business.unit.amenities.error":"Failed to fetch Business-Unit or Amenities, Please Close and Re-Open Outlook or hard refresh the browser if you are using outlook Web using [Ctrl + Shift + R] on your Keyboard",
+  "createing.allocating.room.error":"Error Creating Meeting or Allocating The Meeting Room.",
+  "24hour.meeting.warning":"Meetings longer than 24 hours are not allowed. Please change the meeting duration to proceed.",
+  "sso.error":"SSO Login has failed, Popup message is blocked by the browser. When a pop-up is blocked on Edge or Chrome Browser, it shows a special icon on the right side of the address bar with square icon crossed in the middle, click on it to allow the pop-ups. This setting will only allow the pop-up for the current website."
   }
