@@ -465,6 +465,7 @@ input[type="number"]{width:72px}
 
 .app-version {
   font-size: 10px;
+  text-align: center;
 }
 
 /* Result view: hide pre-action content, show follow-up */
