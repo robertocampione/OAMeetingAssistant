@@ -1,30 +1,24 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <meta charset="utf-8" />
     <title>Fallback SSO</title>
+    <!-- Office.js is required so we can message the parent add-in dialog -->
+    <script src="https://appsforoffice.microsoft.com/lib/1/hosted/office.js"></script>
     <script>
-      window.onload = function () {
-        const hash = window.location.hash.substring(1);
-        const params = new URLSearchParams(hash);
-        const accessToken = params.get("access_token");
-
-        if (accessToken) {
-          // Send token back to parent window
-          window.opener.postMessage(
-            {
-              message: "token",
-              accessToken: accessToken
-            },
-            "*"
-          );
-          window.close();
-        } else {
-          document.body.innerText = "Login failed or canceled.";
+      Office.onReady(function () {
+        try {
+          var hash = window.location.hash || "";
+          if (!hash) {
+            Office.context.ui.messageParent("error=NoHash");
+            return;
+          }
+          Office.context.ui.messageParent(hash);
+        } catch (e) {
+          document.body.textContent = "Could not send token to parent: " + e;
         }
-      };
+      });
     </script>
   </head>
-  <body>
-    Authenticating...
-  </body>
+  <body>Authenticating...</body>
 </html>
