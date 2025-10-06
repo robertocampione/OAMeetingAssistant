@@ -415,7 +415,43 @@ input[type="number"]{width:72px}
   display:flex; align-items:center; gap:8px; padding:10px 12px; border-top:1px solid var(--line);
 }
 .amenities-extra input[type="number"] { width:56px; }
-.amenities-wrapper.has-value .amenities-summary{ font-weight:600; } 
+.amenities-wrapper.has-value .amenities-summary{ font-weight:600; }
+
+.extra-features {
+  display: none;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.extra-features.is-visible {
+  display: flex;
+}
+
+.extra-features[hidden] {
+  display: none !important;
+}
+
+.extra-features__toggle {
+  width: 100%;
+}
+
+.extra-features__group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.extra-features__group .amenities-extra {
+  border-top: none;
+  padding: 0;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 6px;
+}
+
+.extra-features__group .amenities-extra input[type="number"] {
+  width: 72px;
+}
 
 .boxed-field,
 .amenities-toggle{
