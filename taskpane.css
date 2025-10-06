@@ -31,7 +31,8 @@ body{margin:0;background:var(--bg-soft);color:var(--text);font-family:'proximus-
   box-shadow:0 6px 30px rgba(28,28,30,.08);
   overflow:hidden;
   display:flex;
-  flex-direction:column
+  flex-direction:column;
+  height: 100%;
 }
 
 /* Header */
