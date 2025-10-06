@@ -298,7 +298,7 @@ input[type="number"]{width:72px}
   justify-content:center;
   gap:8px;
   padding:8px 10px;
-  border-top:1px solid var(--line);
+  /* border-top:1px solid var(--line); */
   font-size:12px;
   color: var(--brand, #6A1B9A);
   font-weight: bold;
