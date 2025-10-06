@@ -418,7 +418,7 @@ input[type="number"]{width:72px}
 }
 
 /* Small tidy-ups */
-.check-inline{ display:flex; gap:16px; align-items:center; flex-wrap:wrap; }
+.check-inline{ display:flex; gap:10px; align-items:center; flex-wrap:wrap; }
 .two-col{ display:grid; grid-template-columns:1fr 1fr; gap:12px; }
 .field-title {
   font-weight: 600;
