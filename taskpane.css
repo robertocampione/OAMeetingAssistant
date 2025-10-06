@@ -22,7 +22,17 @@ html,body{height:100%}
 body{margin:0;background:var(--bg-soft);color:var(--text);font-family:'proximus-regular', sans-serif;}
 
 /* Card */
-.px-card{width:360px;margin:12px auto;background:var(--bg);border:1px solid var(--line);border-radius:var(--radius);box-shadow:0 6px 30px rgba(28,28,30,.08);overflow:hidden;display:flex;flex-direction:column}
+.px-card{
+  width:360px;
+  /* margin:12px auto; */
+  background:var(--bg);
+  border:1px solid var(--line);
+  border-radius:var(--radius);
+  box-shadow:0 6px 30px rgba(28,28,30,.08);
+  overflow:hidden;
+  display:flex;
+  flex-direction:column
+}
 
 /* Header */
 .header{display:flex;align-items:center;justify-content:space-between;padding:4px 16px;border-bottom:1px solid #efefef;background:linear-gradient(180deg,#f9f9ff 0%,#ffffff 100%)}
