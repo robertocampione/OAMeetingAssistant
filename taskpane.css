@@ -66,21 +66,37 @@ input[type="number"]{width:72px}
 .ms-Checkbox-label{font-size:13px}
 
 
-.ms-Checkbox input[type="checkbox"] {
+/* .ms-Checkbox input[type="checkbox"] {
     width: 24px;
     height: 24px;
     border-radius: 5px;
-    /* appearance: none; */
-    /* -webkit-appearance: none; */
-    /* -moz-appearance: none; */
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
     border: 2px solid #5C2D91;
-    background-color: #fff; /* default */
+    background-color: #fff;
     cursor: pointer;
+} */
+
+/* .ms-Checkbox input[type="checkbox"]:checked {
+    background-color: #5C2D91;
+} */
+
+
+.ms-Checkbox input[type="checkbox"]{
+  appearance: none; /* required for custom */
+  width: 24px; height: 24px; border-radius: 5px;
+  border: 2px solid #5C2D91; background: #fff; position: relative; cursor: pointer;
+}
+.ms-Checkbox input[type="checkbox"]:checked{ background: #5C2D91; }
+.ms-Checkbox input[type="checkbox"]:checked::after{
+  content: "";
+  position: absolute;
+  width: 10px; height: 6px;                 /* <- smaller checkmark */
+  border: 2px solid #fff; border-top: 0; border-right: 0;
+  left: 6px; top: 7px; transform: rotate(-45deg);
 }
 
-.ms-Checkbox input[type="checkbox"]:checked {
-    background-color: #5C2D91; /* fill color when checked */
-}
 
 
 /* CTA */
