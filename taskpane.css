@@ -414,7 +414,7 @@ input[type="number"]{width:72px}
 
 .boxed-field,
 .amenities-toggle{
-  min-height:var(--field-height);
+  /* min-height:var(--field-height); */
 }
 
 /* Small tidy-ups */
