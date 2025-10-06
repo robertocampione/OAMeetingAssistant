@@ -87,9 +87,9 @@ input[type="number"]{width:72px}
 .ms-Checkbox input[type="checkbox"]{
   appearance: none; /* required for custom */
   width: 24px; height: 24px; border-radius: 5px;
-  border: 2px solid #5C2D91; background: #fff; position: relative; cursor: pointer;
+  border: 2px solid var(--brand); background: #fff; position: relative; cursor: pointer;
 }
-.ms-Checkbox input[type="checkbox"]:checked{ background: #5C2D91; }
+.ms-Checkbox input[type="checkbox"]:checked{ background: var(--brand); }
 .ms-Checkbox input[type="checkbox"]:checked::after{
   content: "";
   position: absolute;
