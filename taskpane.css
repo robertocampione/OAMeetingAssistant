@@ -65,6 +65,24 @@ input[type="number"]{width:72px}
 .ms-Checkbox input{accent-color:var(--brand)}
 .ms-Checkbox-label{font-size:13px}
 
+
+.ms-Checkbox input[type="checkbox"] {
+    width: 24px;
+    height: 24px;
+    border-radius: 5px;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    border: 2px solid #5C2D91;
+    background-color: #fff; /* default */
+    cursor: pointer;
+}
+
+.ms-Checkbox input[type="checkbox"]:checked {
+    background-color: #5C2D91; /* fill color when checked */
+}
+
+
 /* CTA */
 .cta{display:flex;flex-direction:column;gap:10px}
 /* Base button */
