@@ -95,7 +95,7 @@ input[type="number"]{width:72px}
   position: absolute;
   width: 10px; height: 6px;                 /* <- smaller checkmark */
   border: 2px solid #fff; border-top: 0; border-right: 0;
-  left: 6px; top: 7px; transform: rotate(-45deg);
+  left: 4px; top: 5px; transform: rotate(-45deg);
 }
 
 /* CTA */
