@@ -24,8 +24,8 @@ body{margin:0;background:var(--bg-soft);color:var(--text);font-family:'proximus-
 /* Card */
 .px-card{
   width:360px;
-  /* margin:12px auto; */
-  background:var(--bg);
+  margin:12px auto;
+  /* background:var(--bg); */
   border:1px solid var(--line);
   border-radius:var(--radius);
   box-shadow:0 6px 30px rgba(28,28,30,.08);
