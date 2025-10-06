@@ -1,47 +1,57 @@
-<script>
-  (function () {
-    const hash = window.location.hash || "";
-    const start = Date.now();
-    const TIMEOUT_MS  = 120000; // up to 2 min in bad networks
-    const TICK_FAST   = 50;     // fast spin first
-    const TICK_NORMAL = 250;    // then relax
-    let attempts = 0;
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Fallback SSO</title>
 
-    function trySend() {
-      attempts++;
+    <!-- REQUIRED: load Office.js so messageParent exists inside the dialog -->
+    <script src="https://appsforoffice.microsoft.com/lib/1/hosted/office.js"></script>
 
-      // 1) Try immediately if the API exists (best case)
-      try {
-        if (Office && Office.context && Office.context.ui && typeof Office.context.ui.messageParent === "function") {
-          Office.context.ui.messageParent(hash || "error=NoHash");
+    <style>
+      body { font-family: system-ui, Arial, sans-serif; margin: 16px; }
+    </style>
+  </head>
+  <body>Authenticating...</body>
+
+  <script>
+    (function () {
+      const hash = window.location.hash || "";     // contains access_token on success
+      const started = Date.now();
+      const TIMEOUT_MS  = 120000;
+      const FAST_MS     = 50;
+      const NORMAL_MS   = 250;
+      let attempts = 0;
+
+      function trySend() {
+        attempts++;
+
+        // 1) Best case: Office dialog API is ready — send immediately
+        try {
+          if (Office && Office.context && Office.context.ui &&
+              typeof Office.context.ui.messageParent === "function") {
+            Office.context.ui.messageParent(hash || "error=NoHash");
+            return; // done
+          }
+        } catch (_) { /* Office not ready yet */ }
+
+        // 2) Stop after timeout
+        if (Date.now() - started > TIMEOUT_MS) {
+          document.body.textContent =
+            "Auth dialog timed out waiting for permission to communicate with the add-in.";
           return;
         }
-      } catch (e) {
-        // Office object not ready yet, keep trying
+
+        // 3) Keep polling; also wire Office.onReady if/when it appears
+        setTimeout(trySend, attempts < 60 ? FAST_MS : NORMAL_MS);
+        try {
+          if (typeof Office !== "undefined" && typeof Office.onReady === "function") {
+            Office.onReady(function () { trySend(); });
+          }
+        } catch (_) { /* ignore */ }
       }
 
-      // 2) Try to *kick* Office init early
-      try {
-        if (typeof Office !== "undefined" && typeof Office.onReady === "function") {
-          Office.onReady(function () {
-            trySend();
-          });
-        }
-      } catch (e) {
-        // ignore
-      }
-
-      // 3) Stop after timeout
-      if (Date.now() - start > TIMEOUT_MS) {
-        document.body.textContent =
-          "Auth dialog timed out waiting for permission to communicate with the add-in.";
-        return;
-      }
-
-      // 4) Keep polling—very fast for a few seconds, then slower
-      setTimeout(trySend, attempts < 60 ? TICK_FAST : TICK_NORMAL);
-    }
-
-    trySend();
-  })();
-</script>
+      // Kick off
+      trySend();
+    })();
+  </script>
+</html>
