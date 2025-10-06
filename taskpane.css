@@ -15,7 +15,7 @@
   --field-border:#e3e5ee;
   --field-radius:4px;
   --field-height:38px;       /* keep all boxes same height */
-    overflow: hidden;
+    overflow-x: hidden;
 }
 
 html,body{height:100%}
