@@ -29,7 +29,8 @@ body{
 /* Card */
 .px-card{
   width:360px;
-  margin:12px auto;
+  margin:0 auto;
+  
   /* background:var(--bg); */
   border:1px solid var(--line);
   border-radius:var(--radius);
@@ -328,8 +329,8 @@ input[type="number"]{width:72px}
 .toggle{display:flex;align-items:center;justify-content:space-between;border:1px solid var(--line);border-radius:10px;padding:10px 12px}
 
 /* Environment bar (retro‑compat) */
-.green-gradient{background:linear-gradient(to bottom,#ffffff 0%,#ffffff 95%,#a5c956 100%)}
-.red-gradient{background:linear-gradient(to bottom,#ffffff 0%,#ffffff 95%,#ffb2b2 100%)}
+.green-gradient{background: linear-gradient(to bottom, #ffffff00 0%, #ffffff 15%, #a5c956 100%)}
+.red-gradient{background:linear-gradient(to bottom,#ffffff00 0%,#ffffff00 15%,#ffb2b2 100%)}
 .env-bar{
   display:flex;
   align-items:center;
