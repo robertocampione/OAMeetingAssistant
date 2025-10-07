@@ -341,7 +341,7 @@ input[type="number"]{width:72px}
   font-size:12px;
   color: var(--brand, #6A1B9A);
   font-weight: bold;
-  position: absolute;
+  position: fixed;
   bottom: 0;
   left: 50%;
   transform: translate(-50%, 0);
