@@ -9,35 +9,44 @@
     </style>
   </head>
   <body>Authenticating...</body>
-  <script>
+    <script>
     (function () {
       const hash = window.location.hash || "";
-      const start = Date.now();
-      const TIMEOUT_MS = 90_000;  
-      const INTERVAL_MS = 300;
-
+      const params = new URLSearchParams(hash.startsWith("#") ? hash.slice(1) : hash);
+      const accessToken = params.get("access_token") || "";
+    
+      const started = Date.now();
+      const TIMEOUT = 120000;
+    
       function trySend() {
+        // 1) In an Office dialog → messageParent
         try {
-
-          if (window.Office && Office.context && Office.context.ui && typeof Office.context.ui.messageParent === "function") {
+          if (Office && Office.context && Office.context.ui &&
+              typeof Office.context.ui.messageParent === "function") {
             Office.context.ui.messageParent(hash || "error=NoHash");
-            return; // done
+            window.close();
+            return;
           }
-        } catch (e) {
-
-        }
-
-        if (Date.now() - start > TIMEOUT_MS) {
-          document.body.textContent =
-            "Auth dialog timed out waiting for permission to communicate with the add-in.";
+        } catch (_) { /* Office not ready yet */ }
+    
+        // 2) In a plain popup opened by window.open → postMessage to opener
+        try {
+          if (window.opener && !window.opener.closed) {
+            window.opener.postMessage({ message: "token", accessToken, raw: hash }, "*");
+            window.close();
+            return;
+          }
+        } catch (_) { /* ignore and retry */ }
+    
+        // 3) Retry a bit; bail on timeout
+        if (Date.now() - started > TIMEOUT) {
+          document.body.textContent = "Auth dialog timed out.";
           return;
         }
-        setTimeout(trySend, INTERVAL_MS);
+        setTimeout(trySend, 200);
       }
+    
       trySend();
-      if (window.Office && Office.onReady) {
-        Office.onReady(function () { trySend(); });
-      }
     })();
-  </script>
+    </script>
 </html>
